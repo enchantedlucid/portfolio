@@ -1,0 +1,28 @@
+portfolio/
+│
+├── index.html
+├── about.html
+├── project.html
+├── logbook.html
+├── contact.html
+│
+├── css/
+│   └── style.css
+│
+├── js/
+│   └── main.js
+│
+├── images/
+│   ├── profile.jpg
+│   ├── poster.jpg
+│   ├── storyboard.jpg
+│   └── thumbnail.jpg
+│
+├── videos/
+│   └── parallel_trailer.mp4
+│
+└── assets/
+    └── pdf/
+        ├── script.pdf
+        ├── storyboard.pdf
+        ├── logbook.pdf
