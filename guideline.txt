@@ -1,0 +1,9 @@
+portfolio/
+├── index.html      ← Homepage (your photo + intro)
+├── about.html      ← About, education, experience, skills
+├── project.html    ← PARALLEL featured + all other projects
+├── contact.html    ← All your contact links
+├── css/
+│   └── style.css   ← Warm green & orange theme
+└── js/
+    └── script.js   ← Scroll effects, lightbox, active nav
