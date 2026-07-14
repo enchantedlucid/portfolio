@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projects — Nurul Fatnin Haidah</title>
+<link rel="icon" href="images/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;600&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <style>
@@ -114,6 +115,25 @@
   border: 1px solid rgba(245,237,224,0.25);
 }
 .modal-link-outline:hover { border-color: #e07830; color: #e07830; }
+.status-badge {
+  display: inline-block; font-family: 'Lato', sans-serif; font-size: .62rem;
+  letter-spacing: .08em; text-transform: uppercase; font-weight: 700;
+  padding: .18rem .55rem; border-radius: 4px; margin-left: .5rem;
+  background: rgba(53,196,160,0.15); color: #35c4a0; border: 1px solid rgba(53,196,160,0.3);
+  vertical-align: middle;
+}
+@media(max-width: 900px) {
+  .modal-phases { grid-template-columns: 1fr; }
+  .modal-gallery { grid-template-columns: repeat(3,1fr); }
+}
+@media(max-width: 560px) {
+  .modal-gallery { grid-template-columns: repeat(2,1fr); }
+  .modal-hero, .modal-hero-fallback { height: 190px; min-height: 190px; }
+  .modal-body { padding: 1.3rem; }
+  .modal-title { font-size: 1.35rem; }
+  .modal-links { flex-direction: column; }
+  .modal-links .modal-link { width: 100%; text-align: center; }
+}
 </style>
 </head>
 <body>
@@ -126,7 +146,11 @@
     <li><a href="project.html" class="active">Projects</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-overlay" id="navOverlay"></div>
 
 <div class="page-hero fade-in">
   <div class="page-tag">02 / Projects</div>
@@ -135,34 +159,192 @@
 </div>
 
 <div class="section">
+
+  <!-- FEATURED: ALMS -->
+  <div class="featured-card">
+    <img src="images/welcome_page.png" alt="Attendance & Leave Management System" class="featured-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="featured-img-fallback t-dev" style="display:none">💻</div>
+    <div class="featured-body">
+      <div class="featured-tag">Featured · Solo-Built System · Workshop I · 2024</div>
+      <div class="featured-title">Attendance & Leave <span>Management System</span></div>
+      <p class="featured-desc">A full desktop attendance and leave management system, solo-designed and built from the ground up in C++ with MySQL on XAMPP. Covers role-based access control across three permission levels, attendance clock-in/out, leave applications with a manager approval workflow, leave balance tracking, department & holiday management, overtime and reward leave, CSV export, and reporting analytics — built through the full SDLC: requirements gathering, ER diagramming, development, integration testing, and documentation.</p>
+      <div class="phases">
+        <div class="phase">
+          <div class="phase-label">Admin</div>
+          <ul><li>Manage employees</li><li>Manage departments</li><li>System-wide reports</li></ul>
+        </div>
+        <div class="phase">
+          <div class="phase-label">Manager</div>
+          <ul><li>Approve leave</li><li>Assign staff</li><li>Team reports</li></ul>
+        </div>
+        <div class="phase">
+          <div class="phase-label">Employee</div>
+          <ul><li>Clock in / out</li><li>Apply for leave</li><li>View attendance history</li></ul>
+        </div>
+      </div>
+      <div class="proj-tags">
+        <span class="proj-tag">C++</span><span class="proj-tag">MySQL</span><span class="proj-tag">XAMPP</span><span class="proj-tag">Solo Project</span>
+      </div>
+      <p style="margin-top:1rem"><a href="#" onclick="openModal('attendance');return false;" class="btn btn-outline" style="padding:.6rem 1.4rem;font-size:.8rem">See Full Case Study →</a></p>
+    </div>
+  </div>
+
   <div class="projects-grid">
 
-    <!-- PARALLEL -->
-    <div class="project-card" onclick="openModal('parallel')">
+    <!-- VR LOCOMOTION FYP -->
+    <div class="project-card" onclick="openModal('fyp')">
+      <div class="project-thumb t-vr"><span class="thumb-emoji">🥽</span></div>
+      <div class="project-body">
+        <div class="project-type">Final Year Project I · VR / UX Research</div>
+        <div class="project-name">VR Locomotion & Motion Sickness Study <span class="status-badge">In Progress</span></div>
+        <div class="project-desc">Unity XR research project studying how different locomotion methods affect cybersickness, using the Simulator Sickness Questionnaire (SSQ) methodology.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Unity XR</span><span class="proj-tag">C#</span><span class="proj-tag">UX Research</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORBIDDEN BOOK FILM -->
+    <div class="project-card" onclick="openModal('film')">
       <div class="project-thumb t-film">
-        <img src="https://enchantedlucid.github.io/workshop2portfolio/images/posterfinal.jpg" alt="PARALLEL" style="width:100%;height:100%;object-fit:cover;opacity:.8" onerror="this.style.display='none'">
-        <span class="thumb-emoji" style="position:absolute">🎬</span>
+        <img src="images/forbidden_book.jpg" alt="Forbidden Book" style="width:100%;height:100%;object-fit:cover;object-position:top;opacity:.85" onerror="this.style.display='none'">
       </div>
       <div class="project-body">
         <div class="project-type">Film Production · Workshop II</div>
-        <div class="project-name">PARALLEL — Short Film</div>
-        <div class="project-desc">Sci-fi psychological drama about two versions of the same person in parallel worlds. Directed and edited by Fatnin.</div>
+        <div class="project-name">Forbidden Book — Short Film</div>
+        <div class="project-desc">Sci-fi short film produced with FTMK's Media Unit and Motion In Focus, in collaboration with Radifin. Directed and edited by Fatnin.</div>
         <div class="proj-tags">
           <span class="proj-tag">Premiere Pro</span><span class="proj-tag">After Effects</span><span class="proj-tag">Director</span>
         </div>
       </div>
     </div>
 
-    <!-- ATTENDANCE SYSTEM -->
-    <div class="project-card" onclick="openModal('attendance')">
-      <div class="project-thumb t-dev"><span class="thumb-emoji">💻</span></div>
+    <!-- SCI-FI VR GAME -->
+    <div class="project-card" onclick="openModal('vr')">
+      <div class="project-thumb t-vr"><span class="thumb-emoji">🎮</span></div>
       <div class="project-body">
-        <div class="project-type">System Development · Workshop I</div>
-        <div class="project-name">Attendance & Leave Management System</div>
-        <div class="project-desc">Full employee attendance and leave tracking system with admin dashboard and report generation.
-        https://youtu.be/HzmsHmFz_pk</div>
+        <div class="project-type">VR Development · Virtual Reality Technology</div>
+        <div class="project-name">Sci-Fi VR Game <span class="status-badge">In Progress</span></div>
+        <div class="project-desc">Immersive VR experience built in Unity XR for the Virtual Reality Technology subject, exploring player interaction and presence in a sci-fi setting.</div>
         <div class="proj-tags">
-          <span class="proj-tag">C++</span><span class="proj-tag">MySQL</span><span class="proj-tag">PHP</span>
+          <span class="proj-tag">Unity XR</span><span class="proj-tag">C#</span><span class="proj-tag">VR</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- YEPPEO WEB APP -->
+    <div class="project-card" onclick="openModal('web')">
+      <div class="project-thumb t-web"><span class="thumb-emoji">🌐</span></div>
+      <div class="project-body">
+        <div class="project-type">Web Development · Web Application Development</div>
+        <div class="project-name">Yeppeo Korean Restaurant — QR Ordering Website</div>
+        <div class="project-desc">Mobile-first, QR-code table ordering web app for a Korean restaurant concept — customers scan a table QR code to browse the menu and place orders, with PHP order processing and MySQL CRUD with input sanitisation and session management.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">PHP</span><span class="proj-tag">MySQL</span><span class="proj-tag">HTML/CSS/JS</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ECOTECH AI WASTE CLASSIFIER -->
+    <div class="project-card" onclick="openModal('ai')">
+      <div class="project-thumb t-motion"><span class="thumb-emoji">♻️</span></div>
+      <div class="project-body">
+        <div class="project-type">AI / Machine Learning</div>
+        <div class="project-name">ECOTECH — AI Waste Classifier</div>
+        <div class="project-desc">ML image recognition app classifying recyclable materials (plastic, paper, glass, metal) to support recycling efficiency — decision tree classification built independently in Python with scikit-learn, pandas, and matplotlib in Colab.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Python</span><span class="proj-tag">scikit-learn</span><span class="proj-tag">pandas</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUSTAINOPOLY GAME -->
+    <div class="project-card" onclick="openModal('game')">
+      <div class="project-thumb t-game"><span class="thumb-emoji">🎲</span></div>
+      <div class="project-body">
+        <div class="project-type">Project Management · UI/UX Design</div>
+        <div class="project-name">Sustainopoly — Unity Game</div>
+        <div class="project-desc">Monopoly-inspired board game built in Unity, teaching sustainability concepts through gameplay — developed for the Project Management subject with a focus on UI/UX design.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Unity</span><span class="proj-tag">C#</span><span class="proj-tag">Game Design</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- YOOYOO DESKTOP APP -->
+    <div class="project-card" onclick="openModal('yooyoo')">
+      <div class="project-thumb t-mobile"><span class="thumb-emoji">🧋</span></div>
+      <div class="project-body">
+        <div class="project-type">Desktop Application · Object-Oriented Programming</div>
+        <div class="project-name">YooYoo — Drinks Ordering System</div>
+        <div class="project-desc">Desktop GUI system built with Java Swing, JDBC, and MySQL — a Customer module (register, login, browse Milk Tea/Fruit Tea/Smoothies, order, pay, membership discounts) and a Staff module for menu management, applying inheritance, polymorphism, and PreparedStatement for SQL-injection prevention.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Java</span><span class="proj-tag">Swing</span><span class="proj-tag">JDBC</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- AR E-BOOK -->
+    <div class="project-card" onclick="openModal('ar')">
+      <div class="project-thumb t-web"><span class="thumb-emoji">📖</span></div>
+      <div class="project-body">
+        <div class="project-type">HCI · Augmented Reality</div>
+        <div class="project-name">AR E-Book: Computer Hardware</div>
+        <div class="project-desc">Human-Computer Interaction project bringing computer hardware concepts to life through augmented reality overlays — prototyped in Figma, built in Unity AR, and validated with user surveys.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Figma</span><span class="proj-tag">Unity AR</span><span class="proj-tag">HCI</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- UTEM 3D CAMPUS WALKTHROUGH -->
+    <div class="project-card" onclick="openModal('campus')">
+      <div class="project-thumb t-vr"><span class="thumb-emoji">🏛️</span></div>
+      <div class="project-body">
+        <div class="project-type">Interactive Computer Graphics · System Integrator & Audio</div>
+        <div class="project-name">UTeM 3D Campus Walkthrough</div>
+        <div class="project-desc">Real-time 3D campus walkthrough built in C++ with OpenGL/GLUT — textured buildings, animated cars on trigonometric paths, dynamic lighting, collision detection, and a day/night cycle. My role: system integrator (merging all modules and resolving conflicts) and audio designer (ambient sound via the Windows Multimedia API).</div>
+        <div class="proj-tags">
+          <span class="proj-tag">C++</span><span class="proj-tag">OpenGL / GLUT</span><span class="proj-tag">3D Graphics</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- BLOSSOM CAFE DB + SHIFTY-BURGERS -->
+    <div class="project-card" onclick="openModal('db')">
+      <div class="project-thumb t-web"><span class="thumb-emoji">🗄️</span></div>
+      <div class="project-body">
+        <div class="project-type">Database & Data Structures</div>
+        <div class="project-name">Blossom Cafe DB & SHIFTY-BURGERS</div>
+        <div class="project-desc">A fully normalised (3NF) relational database for a cafe, with ERD, stored procedures and triggers — paired with a C++ console food-ordering system using STL containers and algorithms.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">MySQL</span><span class="proj-tag">C++</span><span class="proj-tag">STL</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3D ANIMATION -->
+    <div class="project-card" onclick="openModal('animation')">
+      <div class="project-thumb t-art"><span class="thumb-emoji">🧊</span></div>
+      <div class="project-body">
+        <div class="project-type">Computer Animation <span class="status-badge">In Progress</span></div>
+        <div class="project-name">3D Animation & Character Models</div>
+        <div class="project-desc">Character modelling, rigging, and rendering in Blender for the Computer Animation subject.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Blender</span><span class="proj-tag">Rigging</span><span class="proj-tag">3D Animation</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIGITAL IMAGING -->
+    <div class="project-card" onclick="openModal('imaging')">
+      <div class="project-thumb t-art"><span class="thumb-emoji">📷</span></div>
+      <div class="project-body">
+        <div class="project-type">Digital Imaging for Multimedia <span class="status-badge">In Progress</span></div>
+        <div class="project-name">Mental Health Photography Series</div>
+        <div class="project-desc">A conceptual photography series exploring mental health themes, produced and edited in Photoshop for the Digital Imaging for Multimedia subject.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Photoshop</span><span class="proj-tag">Photography</span><span class="proj-tag">Concept Art</span>
         </div>
       </div>
     </div>
@@ -170,13 +352,13 @@
     <!-- MERCHANDISE -->
     <div class="project-card" onclick="openModal('merch')">
       <div class="project-thumb t-film">
-        <img src="https://enchantedlucid.github.io/workshop2portfolio/images/shirtfinal.png" alt="Merch" style="width:100%;height:100%;object-fit:cover;opacity:.75" onerror="this.style.display='none'">
+        <img src="https://enchantedlucid.github.io/workshop2portfolio/images/shirtfinal.png" alt="Merch" style="width:100%;height:100%;object-fit:cover;opacity:.8" onerror="this.style.display='none'">
         <span class="thumb-emoji" style="position:absolute">👕</span>
       </div>
       <div class="project-body">
         <div class="project-type">Brand & Merchandise Design</div>
-        <div class="project-name">PARALLEL — Film Merchandise</div>
-        <div class="project-desc">Complete merchandise line and brand identity for the PARALLEL film showcase.</div>
+        <div class="project-name">Forbidden Book — Film Merchandise</div>
+        <div class="project-desc">Complete merchandise line and brand identity for the Forbidden Book film showcase — t-shirts, cupsleeves, paperbags, and fans built around the film's concept.</div>
         <div class="proj-tags">
           <span class="proj-tag">Photoshop</span><span class="proj-tag">Illustrator</span><span class="proj-tag">Branding</span>
         </div>
@@ -188,62 +370,10 @@
       <div class="project-thumb t-motion"><span class="thumb-emoji">✨</span></div>
       <div class="project-body">
         <div class="project-type">Motion Graphics</div>
-        <div class="project-name">Motion Graphics Project</div>
-        <div class="project-desc">Animated title sequences, explainer videos, and graphic animations produced for the Motion Graphics subject.</div>
+        <div class="project-name">Motion Graphics Reel <span class="status-badge">In Progress</span></div>
+        <div class="project-desc">Animated title sequences, kinetic typography, and explainer animations produced for the Motion Graphics subject and Motion Graphic Exhibition club.</div>
         <div class="proj-tags">
           <span class="proj-tag">After Effects</span><span class="proj-tag">Illustrator</span><span class="proj-tag">Animate</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- WEB APP -->
-    <div class="project-card" onclick="openModal('web')">
-      <div class="project-thumb t-web"><span class="thumb-emoji">🌐</span></div>
-      <div class="project-body">
-        <div class="project-type">Web Development</div>
-        <div class="project-name">Web Application Project</div>
-        <div class="project-desc">Web application developed for the Web Application Development subject. Add your description here.</div>
-        <div class="proj-tags">
-          <span class="proj-tag">HTML</span><span class="proj-tag">CSS</span><span class="proj-tag">JavaScript</span><span class="proj-tag">PHP</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- GAME -->
-    <div class="project-card" onclick="openModal('game')">
-      <div class="project-thumb t-game"><span class="thumb-emoji">🎮</span></div>
-      <div class="project-body">
-        <div class="project-type">Game Development</div>
-        <div class="project-name">Game Development Project</div>
-        <div class="project-desc">Game prototype developed in Unity for the Computer Games Development and Game Play subjects.</div>
-        <div class="proj-tags">
-          <span class="proj-tag">Unity</span><span class="proj-tag">C#</span><span class="proj-tag">Game Design</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- VR -->
-    <div class="project-card" onclick="openModal('vr')">
-      <div class="project-thumb t-vr"><span class="thumb-emoji">🥽</span></div>
-      <div class="project-body">
-        <div class="project-type">VR Experience</div>
-        <div class="project-name">Virtual Reality Project</div>
-        <div class="project-desc">Immersive VR experience built in Unity for the Virtual Reality Technology subject.</div>
-        <div class="proj-tags">
-          <span class="proj-tag">Unity</span><span class="proj-tag">VR</span><span class="proj-tag">C#</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- MOBILE -->
-    <div class="project-card" onclick="openModal('mobile')">
-      <div class="project-thumb t-mobile"><span class="thumb-emoji">📱</span></div>
-      <div class="project-body">
-        <div class="project-type">Mobile App</div>
-        <div class="project-name">Mobile Application Project</div>
-        <div class="project-desc">Android mobile application developed for the Mobile Application Development subject.</div>
-        <div class="proj-tags">
-          <span class="proj-tag">Java</span><span class="proj-tag">Android</span>
         </div>
       </div>
     </div>
@@ -253,8 +383,8 @@
       <div class="project-thumb t-art"><span class="thumb-emoji">🎨</span></div>
       <div class="project-body">
         <div class="project-type">Digital Art · Personal Project</div>
-        <div class="project-name">Digital Art & Pixel Illustration</div>
-        <div class="project-desc">Personal pixel art and digital illustration work. Learning creative coding with Python on Codedex.</div>
+        <div class="project-name">Pixel Art & Creative Coding</div>
+        <div class="project-desc">Personal pixel art and digital illustration work, alongside creative coding practice in Python on Codedex.</div>
         <div class="proj-tags">
           <span class="proj-tag">Pixel Art</span><span class="proj-tag">Illustrator</span><span class="proj-tag">Python</span>
         </div>
@@ -266,16 +396,79 @@
 
 <!-- ── MODALS ── -->
 
-<!-- PARALLEL MODAL -->
-<div class="modal-overlay" id="modal-parallel">
+<!-- ATTENDANCE MODAL -->
+<div class="modal-overlay" id="modal-attendance">
   <div class="modal">
-    <button class="modal-close" onclick="closeModal('parallel')">✕</button>
-    <img src="https://enchantedlucid.github.io/workshop2portfolio/images/posterfinal.jpg" alt="PARALLEL" class="modal-hero" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <button class="modal-close" onclick="closeModal('attendance')">✕</button>
+    <img src="images/welcome_page.png" alt="ALMS Welcome Screen" class="modal-hero" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="modal-hero-fallback t-dev" style="display:none">💻</div>
+    <div class="modal-body">
+      <div class="modal-tag">System Development · Workshop I · 2024 · Solo Project</div>
+      <div class="modal-title">Attendance & Leave <span>Management System</span></div>
+      <p class="modal-desc">A full desktop attendance and leave management system, solo-designed and built in C++ with MySQL on XAMPP. Implements role-based access control across Admin, Manager, and Employee levels — attendance clock-in/out, leave applications with a manager approval workflow, leave balance, department & holiday management, overtime and reward leave, CSV export, and reporting analytics. Built through the full SDLC: requirements gathering, ER diagramming, C++ development, MySQL integration, unit & integration testing, and full documentation, with C++ exception handling and role-confined data access throughout.</p>
+      <div class="modal-gallery">
+        <img src="images/admin_dashboard.png" alt="Admin Menu" onerror="this.style.display='none'">
+        <img src="images/manager_dashboard.png" alt="Manager Menu" onerror="this.style.display='none'">
+        <img src="images/staff_dashboard.png" alt="Employee Menu" onerror="this.style.display='none'">
+        <img src="images/welcome_page.png" alt="Welcome Screen" onerror="this.style.display='none'">
+      </div>
+      <div class="modal-phases">
+        <div class="modal-phase">
+          <div class="modal-phase-label">Admin</div>
+          <ul><li>Manage employees</li><li>Manage departments</li><li>Manage holidays</li><li>System-wide reports</li></ul>
+        </div>
+        <div class="modal-phase">
+          <div class="modal-phase-label">Manager</div>
+          <ul><li>Approve leave</li><li>Assign staff to dept.</li><li>Team-view reports</li></ul>
+        </div>
+        <div class="modal-phase">
+          <div class="modal-phase-label">Employee</div>
+          <ul><li>Clock in / out</li><li>Apply for leave</li><li>View leave & attendance history</li></ul>
+        </div>
+      </div>
+      <div class="modal-tags">
+        <span class="modal-tag-item">C++</span><span class="modal-tag-item">MySQL</span>
+        <span class="modal-tag-item">XAMPP</span><span class="modal-tag-item">RBAC</span>
+        <span class="modal-tag-item">Solo Project</span>
+      </div>
+      <div class="modal-links">
+        <a href="https://github.com/enchantedlucid" target="_blank" class="modal-link modal-link-primary">GitHub Repo</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FYP MODAL -->
+<div class="modal-overlay" id="modal-fyp">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('fyp')">✕</button>
+    <div class="modal-hero-fallback t-vr">🥽</div>
+    <div class="modal-body">
+      <div class="modal-tag">Final Year Project I · In Progress · Unity XR</div>
+      <div class="modal-title">VR Locomotion & <span>Motion Sickness Study</span></div>
+      <p class="modal-desc">My Final Year Project investigates how different VR locomotion methods (e.g. teleportation vs. smooth movement) affect cybersickness and user comfort. Built in Unity with Unity XR and C#, the study applies the Simulator Sickness Questionnaire (SSQ) methodology to measure participant discomfort across conditions. FYP II continues this work in the Special Semester.</p>
+      <div class="modal-tags">
+        <span class="modal-tag-item">Unity XR</span><span class="modal-tag-item">C#</span>
+        <span class="modal-tag-item">SSQ Methodology</span><span class="modal-tag-item">UX Research</span>
+      </div>
+      <div class="modal-links">
+        <a href="https://github.com/enchantedlucid" target="_blank" class="modal-link modal-link-outline">GitHub Repo</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FORBIDDEN BOOK FILM MODAL -->
+<div class="modal-overlay" id="modal-film">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('film')">✕</button>
+    <img src="images/forbidden_book.jpg" alt="Forbidden Book" class="modal-hero" style="object-position:top" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
     <div class="modal-hero-fallback t-film" style="display:none">🎬</div>
     <div class="modal-body">
       <div class="modal-tag">Short Film · Workshop II · Director & Video Editor</div>
-      <div class="modal-title"><span>PARALLEL</span> — Short Film</div>
-      <p class="modal-desc">Two versions of the same person living in parallel worlds — one struggling with unemployment, the other living a successful but empty life. When they discover a mysterious mirror connecting their realities, they make a fateful decision to switch lives. A sci-fi psychological drama produced over 8 weeks with a crew of 4, screened at the faculty showcase on January 15, 2026 at Lab Multimedia 3, FTMK UTeM.</p>
+      <div class="modal-title"><span>Forbidden Book</span> — Short Film</div>
+      <p style="font-size:.72rem;color:var(--text-muted);margin-bottom:.8rem;font-style:italic">Working title: "Parallel"</p>
+      <p class="modal-desc">"Some knowledge should remain hidden." A sci-fi short film about a young man who unlocks a forbidden book that awakens a hidden digital force in the city around him. Produced in collaboration with FTMK's Media Unit ("Motion In Focus — Frames That Breathe") and Radifin, and screened at the faculty showcase. Fatnin led direction and video editing, with full VFX and merchandise design.</p>
       <div class="modal-gallery">
         <img src="https://enchantedlucid.github.io/workshop2portfolio/images/posterdraft1.jpeg" alt="Poster Draft" onerror="this.style.display='none'">
         <img src="https://enchantedlucid.github.io/workshop2portfolio/images/storyboard7.png" alt="Storyboard" onerror="this.style.display='none'">
@@ -299,7 +492,6 @@
       <div class="modal-tags">
         <span class="modal-tag-item">Premiere Pro</span><span class="modal-tag-item">After Effects</span>
         <span class="modal-tag-item">DaVinci Resolve</span><span class="modal-tag-item">Photoshop</span>
-        <span class="modal-tag-item">Adobe Firefly</span><span class="modal-tag-item">Blender</span>
       </div>
       <div class="modal-links">
         <a href="https://enchantedlucid.github.io/workshop2portfolio/logbook.html" target="_blank" class="modal-link modal-link-primary">View Logbook</a>
@@ -309,23 +501,201 @@
   </div>
 </div>
 
-<!-- ATTENDANCE MODAL -->
-<div class="modal-overlay" id="modal-attendance">
+<!-- SCI-FI VR MODAL -->
+<div class="modal-overlay" id="modal-vr">
   <div class="modal">
-    <button class="modal-close" onclick="closeModal('attendance')">✕</button>
-    <div class="modal-hero-fallback t-dev">💻</div>
+    <button class="modal-close" onclick="closeModal('vr')">✕</button>
+    <div class="modal-hero-fallback t-vr">🎮</div>
     <div class="modal-body">
-      <div class="modal-tag">System Development · Workshop I · C++ & MySQL</div>
-      <div class="modal-title">Attendance & Leave <span>Management System</span></div>
-      <p class="modal-desc">A full-featured attendance and leave management system for employees. Built with C++, PHP, and MySQL running on XAMPP. Features include employee login, attendance marking, leave request submission, approval workflow, report generation, and a full admin dashboard.</p>
+      <div class="modal-tag">Virtual Reality · Virtual Reality Technology Subject</div>
+      <div class="modal-title">Sci-Fi <span>VR Game</span></div>
+      <p class="modal-desc">An immersive VR experience built in Unity XR for the Virtual Reality Technology subject. Explores spatial interaction, player presence, and environment design within a sci-fi setting, applying core VR development concepts covered in class — locomotion, interaction design, and comfort considerations.</p>
       <div class="modal-tags">
-        <span class="modal-tag-item">C++</span><span class="modal-tag-item">MySQL</span>
-        <span class="modal-tag-item">PHP</span><span class="modal-tag-item">XAMPP</span>
-        <span class="modal-tag-item">HTML</span><span class="modal-tag-item">CSS</span>
+        <span class="modal-tag-item">Unity XR</span><span class="modal-tag-item">C#</span>
+        <span class="modal-tag-item">VR Interaction Design</span>
       </div>
       <div class="modal-links">
-        <a href="#" class="modal-link modal-link-primary">View Project</a>
-        <a href="#" class="modal-link modal-link-outline">GitHub Repo</a>
+        <a href="https://github.com/enchantedlucid" target="_blank" class="modal-link modal-link-primary">GitHub Repo</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WEB MODAL -->
+<div class="modal-overlay" id="modal-web">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('web')">✕</button>
+    <div class="modal-hero-fallback t-web">🌐</div>
+    <div class="modal-body">
+      <div class="modal-tag">Web Development · Web Application Development · 2024</div>
+      <div class="modal-title">Yeppeo Korean Restaurant — <span>QR Ordering Website</span></div>
+      <p class="modal-desc">A mobile-first, QR-code-based table ordering web application for a Korean restaurant concept. Customers scan a QR code at their table to browse the digital menu and place orders from their phone, while a PHP back end processes orders with MySQL CRUD, input sanitisation, and session management.</p>
+      <div class="modal-tags">
+        <span class="modal-tag-item">PHP</span><span class="modal-tag-item">MySQL</span>
+        <span class="modal-tag-item">HTML</span><span class="modal-tag-item">CSS</span><span class="modal-tag-item">JavaScript</span>
+      </div>
+      <div class="modal-links">
+        <a href="https://github.com/enchantedlucid" target="_blank" class="modal-link modal-link-primary">GitHub Repo</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AI CLASSIFIER MODAL -->
+<div class="modal-overlay" id="modal-ai">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('ai')">✕</button>
+    <div class="modal-hero-fallback t-motion">♻️</div>
+    <div class="modal-body">
+      <div class="modal-tag">Artificial Intelligence · 2024</div>
+      <div class="modal-title">ECOTECH — <span>AI Waste Classifier</span></div>
+      <p class="modal-desc">A machine learning image recognition app classifying recyclable materials — plastic, paper, glass, and metal — to support recycling efficiency. Independently applied decision tree classification, data encoding, and model training/testing splits in Python with scikit-learn, pandas, and matplotlib in Google Colab.</p>
+      <div class="modal-tags">
+        <span class="modal-tag-item">Python</span><span class="modal-tag-item">scikit-learn</span>
+        <span class="modal-tag-item">pandas</span><span class="modal-tag-item">matplotlib</span>
+      </div>
+      <div class="modal-links">
+        <a href="https://github.com/enchantedlucid" target="_blank" class="modal-link modal-link-primary">GitHub Repo</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GAME MODAL -->
+<div class="modal-overlay" id="modal-game">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('game')">✕</button>
+    <div class="modal-hero-fallback t-game">🎲</div>
+    <div class="modal-body">
+      <div class="modal-tag">Project Management · UI/UX Design</div>
+      <div class="modal-title">Sustainopoly — <span>Unity Game</span></div>
+      <p class="modal-desc">A Monopoly-inspired board game built in Unity that teaches sustainability and environmental decision-making through gameplay. Developed for the Project Management subject with a focus on UI/UX design, game logic, and board mechanics.</p>
+      <div class="modal-tags">
+        <span class="modal-tag-item">Unity</span><span class="modal-tag-item">C#</span>
+        <span class="modal-tag-item">Game Design</span>
+      </div>
+      <div class="modal-links">
+        <a href="https://github.com/enchantedlucid" target="_blank" class="modal-link modal-link-primary">GitHub Repo</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- YOOYOO MODAL -->
+<div class="modal-overlay" id="modal-yooyoo">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('yooyoo')">✕</button>
+    <div class="modal-hero-fallback t-mobile">🧋</div>
+    <div class="modal-body">
+      <div class="modal-tag">Object-Oriented Programming · 2024</div>
+      <div class="modal-title">YooYoo — <span>Drinks Ordering System</span></div>
+      <p class="modal-desc">A desktop GUI system built with Java Swing, JDBC, and MySQL. Features a Customer module (register, login, browse three categories — Milk Tea, Fruit Tea, Smoothies — customise, order, pay, and membership discounts) and a Staff module for CRUD menu management. Applies OOP throughout: inheritance across the drink class hierarchy, polymorphism, interfaces, Java Collections, and PreparedStatement for SQL-injection prevention.</p>
+      <div class="modal-tags">
+        <span class="modal-tag-item">Java</span><span class="modal-tag-item">Swing</span>
+        <span class="modal-tag-item">JDBC</span><span class="modal-tag-item">MySQL</span><span class="modal-tag-item">OOP</span>
+      </div>
+      <div class="modal-links">
+        <a href="https://github.com/enchantedlucid" target="_blank" class="modal-link modal-link-primary">GitHub Repo</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AR E-BOOK MODAL -->
+<div class="modal-overlay" id="modal-ar">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('ar')">✕</button>
+    <div class="modal-hero-fallback t-web">📖</div>
+    <div class="modal-body">
+      <div class="modal-tag">Human-Computer Interaction · Augmented Reality</div>
+      <div class="modal-title">AR E-Book: <span>Computer Hardware</span></div>
+      <p class="modal-desc">An augmented reality e-book that layers interactive 3D models and animations of computer hardware components over printed pages, viewed through a mobile camera. UX and page layout were prototyped in Figma before implementation in Unity AR, validated with user surveys applying core HCI usability principles.</p>
+      <div class="modal-tags">
+        <span class="modal-tag-item">Figma</span><span class="modal-tag-item">Unity AR</span>
+        <span class="modal-tag-item">HCI</span>
+      </div>
+      <div class="modal-links">
+        <a href="https://github.com/enchantedlucid" target="_blank" class="modal-link modal-link-primary">GitHub Repo</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CAMPUS WALKTHROUGH MODAL -->
+<div class="modal-overlay" id="modal-campus">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('campus')">✕</button>
+    <div class="modal-hero-fallback t-vr">🏛️</div>
+    <div class="modal-body">
+      <div class="modal-tag">Interactive Computer Graphics · System Integrator & Audio · 2024</div>
+      <div class="modal-title">UTeM 3D <span>Campus Walkthrough</span></div>
+      <p class="modal-desc">A real-time 3D walkthrough of the UTeM campus, built from scratch in C++ with OpenGL/GLUT — textured buildings, animated cars following trigonometric paths, dynamic lighting, collision detection, a day/night cycle, and an interactive camera. My role was system integrator, merging all modules and resolving conflicts, and audio designer, implementing ambient sound via the Windows Multimedia API (PlaySound()).</p>
+      <div class="modal-tags">
+        <span class="modal-tag-item">C++</span><span class="modal-tag-item">OpenGL / GLUT</span>
+        <span class="modal-tag-item">3D Graphics</span><span class="modal-tag-item">Sound Design</span>
+      </div>
+      <div class="modal-links">
+        <a href="https://github.com/enchantedlucid" target="_blank" class="modal-link modal-link-primary">GitHub Repo</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DATABASE MODAL -->
+<div class="modal-overlay" id="modal-db">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('db')">✕</button>
+    <div class="modal-hero-fallback t-web">🗄️</div>
+    <div class="modal-body">
+      <div class="modal-tag">Database & Data Structures · 2023–2024</div>
+      <div class="modal-title">Blossom Cafe DB & <span>SHIFTY-BURGERS</span></div>
+      <p class="modal-desc">Two paired subject deliverables: Blossom Cafe is a fully normalised (3NF) relational database for a cafe, complete with an ERD, stored procedures, triggers, and complex analytical SQL queries. SHIFTY-BURGERS is a C++ console food-ordering system using <code>vector&lt;MenuItem&gt;</code> with sort and search implemented via the STL <code>&lt;algorithm&gt;</code> library.</p>
+      <div class="modal-tags">
+        <span class="modal-tag-item">MySQL</span><span class="modal-tag-item">ERD</span>
+        <span class="modal-tag-item">C++</span><span class="modal-tag-item">STL</span>
+      </div>
+      <div class="modal-links">
+        <a href="https://github.com/enchantedlucid" target="_blank" class="modal-link modal-link-primary">GitHub Repo</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 3D ANIMATION MODAL -->
+<div class="modal-overlay" id="modal-animation">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('animation')">✕</button>
+    <div class="modal-hero-fallback t-art">🧊</div>
+    <div class="modal-body">
+      <div class="modal-tag">Computer Animation · In Progress</div>
+      <div class="modal-title">3D Animation & <span>Character Models</span></div>
+      <p class="modal-desc">Character modelling, rigging, and rendering practice in Blender for the Computer Animation subject — building toward a short animated sequence.</p>
+      <div class="modal-tags">
+        <span class="modal-tag-item">Blender</span><span class="modal-tag-item">Rigging</span>
+        <span class="modal-tag-item">Rendering</span>
+      </div>
+      <div class="modal-links">
+        <a href="https://www.behance.net/fatninasrin" target="_blank" class="modal-link modal-link-primary">View Gallery</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DIGITAL IMAGING MODAL -->
+<div class="modal-overlay" id="modal-imaging">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('imaging')">✕</button>
+    <div class="modal-hero-fallback t-art">📷</div>
+    <div class="modal-body">
+      <div class="modal-tag">Digital Imaging for Multimedia · In Progress</div>
+      <div class="modal-title">Mental Health <span>Photography Series</span></div>
+      <p class="modal-desc">A conceptual photography series exploring mental health themes through composition, lighting, and post-processing — shot and edited in Photoshop for the Digital Imaging for Multimedia subject.</p>
+      <div class="modal-tags">
+        <span class="modal-tag-item">Photoshop</span><span class="modal-tag-item">Photography</span>
+        <span class="modal-tag-item">Concept Art</span>
+      </div>
+      <div class="modal-links">
+        <a href="https://www.behance.net/fatninasrin" target="_blank" class="modal-link modal-link-primary">View Gallery</a>
       </div>
     </div>
   </div>
@@ -335,11 +705,12 @@
 <div class="modal-overlay" id="modal-merch">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('merch')">✕</button>
-    <img src="https://enchantedlucid.github.io/workshop2portfolio/images/shirtfinal.png" alt="Merch" class="modal-hero" style="object-position:top" onerror="this.style.display='none'">
+    <img src="https://enchantedlucid.github.io/workshop2portfolio/images/shirtfinal.png" alt="Merch" class="modal-hero" style="object-position:top" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="modal-hero-fallback t-film" style="display:none">👕</div>
     <div class="modal-body">
-      <div class="modal-tag">Brand & Merchandise Design · PARALLEL Film</div>
-      <div class="modal-title">PARALLEL — Film <span>Merchandise</span></div>
-      <p class="modal-desc">Designed a complete merchandise line for the PARALLEL film showcase event. Products include t-shirts, cupsleeves, paperbags, and fans — all built around the film's dual-world concept with a consistent brand identity across every item.</p>
+      <div class="modal-tag">Brand & Merchandise Design · Forbidden Book Film</div>
+      <div class="modal-title">Forbidden Book — Film <span>Merchandise</span></div>
+      <p class="modal-desc">A complete merchandise line designed for the Forbidden Book film showcase event. Products include t-shirts, cupsleeves, paperbags, and fans — all built around the film's visual identity and brand elements for a consistent showcase experience.</p>
       <div class="modal-tags">
         <span class="modal-tag-item">Photoshop</span><span class="modal-tag-item">Illustrator</span>
         <span class="modal-tag-item">Brand Design</span><span class="modal-tag-item">Print Design</span>
@@ -358,97 +729,14 @@
     <div class="modal-hero-fallback t-motion">✨</div>
     <div class="modal-body">
       <div class="modal-tag">Motion Graphics · Faculty Free Module</div>
-      <div class="modal-title">Motion <span>Graphics Project</span></div>
-      <p class="modal-desc">Add your motion graphics project description here — title sequences, animated explainers, or graphic animations produced for the Motion Graphics subject or your Motion Graphic Exhibition Club work.</p>
+      <div class="modal-title">Motion <span>Graphics Reel</span></div>
+      <p class="modal-desc">A collection of animated title sequences, kinetic typography, and short explainer animations produced for the Motion Graphics subject, incorporating green screen compositing, sound design, and AI-assisted asset generation.</p>
       <div class="modal-tags">
         <span class="modal-tag-item">After Effects</span><span class="modal-tag-item">Illustrator</span>
         <span class="modal-tag-item">Animate</span><span class="modal-tag-item">Premiere Pro</span>
       </div>
       <div class="modal-links">
-        <a href="#" class="modal-link modal-link-primary">View Project</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- WEB MODAL -->
-<div class="modal-overlay" id="modal-web">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('web')">✕</button>
-    <div class="modal-hero-fallback t-web">🌐</div>
-    <div class="modal-body">
-      <div class="modal-tag">Web Development · Year 3 Semester 1</div>
-      <div class="modal-title">Web <span>Application Project</span></div>
-      <p class="modal-desc">Add your web application project description here. What did it do? Who was it for? What problem did it solve? Replace this with your real project details.</p>
-      <div class="modal-tags">
-        <span class="modal-tag-item">HTML</span><span class="modal-tag-item">CSS</span>
-        <span class="modal-tag-item">JavaScript</span><span class="modal-tag-item">PHP</span><span class="modal-tag-item">MySQL</span>
-      </div>
-      <div class="modal-links">
-        <a href="#" class="modal-link modal-link-primary">Live Demo</a>
-        <a href="#" class="modal-link modal-link-outline">GitHub Repo</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- GAME MODAL -->
-<div class="modal-overlay" id="modal-game">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('game')">✕</button>
-    <div class="modal-hero-fallback t-game">🎮</div>
-    <div class="modal-body">
-      <div class="modal-tag">Game Development · Computer Games Development</div>
-      <div class="modal-title">Game <span>Development Project</span></div>
-      <p class="modal-desc">Add your game project description here. What genre? What was the concept? What was your specific role — designer, developer, artist? Built using Unity and C#.</p>
-      <div class="modal-tags">
-        <span class="modal-tag-item">Unity</span><span class="modal-tag-item">C#</span>
-        <span class="modal-tag-item">Game Design</span>
-      </div>
-      <div class="modal-links">
-        <a href="#" class="modal-link modal-link-primary">Play Demo</a>
-        <a href="#" class="modal-link modal-link-outline">GitHub Repo</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- VR MODAL -->
-<div class="modal-overlay" id="modal-vr">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('vr')">✕</button>
-    <div class="modal-hero-fallback t-vr">🥽</div>
-    <div class="modal-body">
-      <div class="modal-tag">Virtual Reality · VR Technology Subject</div>
-      <div class="modal-title">Virtual Reality <span>Experience</span></div>
-      <p class="modal-desc">Add your VR project description here. What environment or experience did you build? What was the purpose — education, entertainment, training? What platform was it for?</p>
-      <div class="modal-tags">
-        <span class="modal-tag-item">Unity</span><span class="modal-tag-item">VR</span>
-        <span class="modal-tag-item">C#</span>
-      </div>
-      <div class="modal-links">
-        <a href="#" class="modal-link modal-link-primary">View Project</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- MOBILE MODAL -->
-<div class="modal-overlay" id="modal-mobile">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('mobile')">✕</button>
-    <div class="modal-hero-fallback t-mobile">📱</div>
-    <div class="modal-body">
-      <div class="modal-tag">Mobile App · Mobile Application Development</div>
-      <div class="modal-title">Mobile <span>Application</span></div>
-      <p class="modal-desc">Add your mobile application description here. What did the app do? Who was the target user? What features did it have? Built for Android using Java.</p>
-      <div class="modal-tags">
-        <span class="modal-tag-item">Java</span><span class="modal-tag-item">Android Studio</span>
-        <span class="modal-tag-item">SQLite</span>
-      </div>
-      <div class="modal-links">
-        <a href="#" class="modal-link modal-link-primary">View Project</a>
-        <a href="#" class="modal-link modal-link-outline">GitHub Repo</a>
+        <a href="https://github.com/enchantedlucid" target="_blank" class="modal-link modal-link-primary">View Project</a>
       </div>
     </div>
   </div>
@@ -461,14 +749,14 @@
     <div class="modal-hero-fallback t-art">🎨</div>
     <div class="modal-body">
       <div class="modal-tag">Digital Art · Personal Project</div>
-      <div class="modal-title">Digital Art & <span>Pixel Illustration</span></div>
+      <div class="modal-title">Pixel Art & <span>Creative Coding</span></div>
       <p class="modal-desc">Personal exploration of pixel art and digital illustration. Currently learning creative coding using Python through Codedex, combining programming with visual storytelling and art.</p>
       <div class="modal-tags">
         <span class="modal-tag-item">Pixel Art</span><span class="modal-tag-item">Illustrator</span>
         <span class="modal-tag-item">Photoshop</span><span class="modal-tag-item">Python</span><span class="modal-tag-item">Codedex</span>
       </div>
       <div class="modal-links">
-        <a href="#" class="modal-link modal-link-primary">View Gallery</a>
+        <a href="https://www.behance.net/fatninasrin" target="_blank" class="modal-link modal-link-primary">View Gallery</a>
       </div>
     </div>
   </div>
