@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nurul Fatnin Haidah — Portfolio</title>
+<meta name="description" content="Nurul Fatnin Haidah — Interactive Media developer specialising in VR, web development, and motion graphics. Final-year Computer Science student at UTeM, seeking industrial training October 2026.">
+<link rel="icon" href="images/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;600&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -17,20 +19,24 @@
     <li><a href="project.html">Projects</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-overlay" id="navOverlay"></div>
 
 <div class="hero">
   <div class="hero-left">
-    <div class="hero-badge fade-in">Creative Developer & Interactive Media</div>
+    <div class="hero-badge fade-in">Interactive Media · Seeking Industrial Training Oct 2026</div>
     <h1 class="hero-title fade-in delay-1">Portfolio<span>.</span></h1>
     <div class="hero-info-card fade-in delay-2">
       <p><strong>Name:</strong> Nurul Fatnin Haidah</p>
-      <p><strong>Programme:</strong> Bachelor of Computer Science (Interactive Media)</p>
+      <p><strong>Programme:</strong> Bachelor of Computer Science (Interactive Media) with Honours</p>
       <p><strong>University:</strong> Universiti Teknikal Malaysia Melaka (UTeM)</p>
-      <p><strong>Role:</strong> Creative Developer · Director · Designer</p>
+      <p><strong>Focus:</strong> Software & Web Development · VR · Motion Graphics</p>
     </div>
     <p class="hero-desc fade-in delay-3">
-      Final year student specialising in Interactive Media — working across web development, film production, motion graphics, game dev, and VR. Based in Kuala Lumpur.
+      Year 3 Computer Science (Interactive Media) student working across VR development, web & software systems, and motion graphics. Currently building a VR locomotion &amp; motion sickness study in Unity XR for my Final Year Project. Based in Kuala Lumpur, open to internships across Malaysia.
     </p>
     <div class="hero-cta fade-in delay-4">
       <a href="project.html" class="btn btn-primary">View Projects</a>
@@ -40,14 +46,32 @@
   </div>
   <div class="hero-right">
     <div class="photo-frame">
-      <!-- Replace with your actual photo path -->
       <img src="images/profile.jpg" alt="Nurul Fatnin Haidah"
            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="photo-placeholder">
+      <div class="photo-placeholder" style="display:none">
         <span>🧕</span>
         <p>Add profile.jpg<br>to images folder</p>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="stats-grid">
+  <div class="stat">
+    <h3>15+</h3>
+    <p>Major Projects</p>
+  </div>
+  <div class="stat">
+    <h3>8+</h3>
+    <p>Languages & Tools</p>
+  </div>
+  <div class="stat">
+    <h3>3.55</h3>
+    <p>CGPA</p>
+  </div>
+  <div class="stat">
+    <h3>Oct '26</h3>
+    <p>Industrial Training</p>
   </div>
 </div>
 
