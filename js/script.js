@@ -7,6 +7,33 @@ document.querySelectorAll('.nav-links a').forEach(link => {
   }
 });
 
+// ── MOBILE NAV TOGGLE ──
+const navToggle = document.getElementById('navToggle');
+const navLinksEl = document.querySelector('.nav-links');
+const navOverlay = document.getElementById('navOverlay');
+
+function closeNav() {
+  navToggle.classList.remove('open');
+  navLinksEl.classList.remove('open');
+  navOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function toggleNav() {
+  const isOpen = navLinksEl.classList.toggle('open');
+  navToggle.classList.toggle('open', isOpen);
+  navOverlay.classList.toggle('open', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+if (navToggle) {
+  navToggle.addEventListener('click', toggleNav);
+  navOverlay.addEventListener('click', closeNav);
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', closeNav);
+  });
+  window.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 900) closeNav(); });
+}
+
 // ── SCROLL REVEAL ──
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
