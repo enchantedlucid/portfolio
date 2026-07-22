@@ -134,6 +134,34 @@
   .modal-links { flex-direction: column; }
   .modal-links .modal-link { width: 100%; text-align: center; }
 }
+
+/* LIGHTBOX */
+.modal-gallery img, .modal-hero { cursor: zoom-in; }
+.lightbox-overlay {
+  display: none;
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(5,10,7,0.96);
+  align-items: center; justify-content: center;
+  padding: 3rem 2rem;
+}
+.lightbox-overlay.open { display: flex; }
+.lightbox-overlay img {
+  max-width: 100%; max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  animation: modalIn .25s ease;
+}
+.lightbox-close {
+  position: fixed; top: 1.5rem; right: 1.5rem;
+  background: rgba(200,96,26,0.15);
+  border: 1px solid rgba(200,96,26,0.3);
+  color: #f5ede0; width: 42px; height: 42px;
+  border-radius: 50%; font-size: 1.1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .2s; z-index: 301;
+}
+.lightbox-close:hover { background: var(--orange); }
 </style>
 </head>
 <body>
@@ -154,45 +182,30 @@
 
 <div class="page-hero fade-in">
   <div class="page-tag">02 / Projects</div>
-  <h1 class="page-title">Selected <span>Work</span></h1>
+  <h1 class="page-title">My <span>Projects</span></h1>
   <p style="color:#a8c0b0;font-family:'Lato',sans-serif;font-size:.9rem;margin-top:.8rem">Click any project to explore</p>
 </div>
 
 <div class="section">
 
-  <!-- FEATURED: ALMS -->
-  <div class="featured-card">
-    <img src="images/welcome_page.png" alt="Attendance & Leave Management System" class="featured-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div class="featured-img-fallback t-dev" style="display:none">💻</div>
+  <!-- FEATURED: dynamic, updates on project click -->
+  <div class="featured-card" id="featured-card">
+    <img id="featured-img" src="" alt="" class="featured-img" style="display:none" onerror="this.style.display='none';document.getElementById('featured-fallback').style.display='flex'">
+    <div class="featured-img-fallback t-vr" id="featured-fallback">🥽</div>
     <div class="featured-body">
-      <div class="featured-tag">Featured · Solo-Built System · Workshop I · 2024</div>
-      <div class="featured-title">Attendance & Leave <span>Management System</span></div>
-      <p class="featured-desc">A full desktop attendance and leave management system, solo-designed and built from the ground up in C++ with MySQL on XAMPP. Covers role-based access control across three permission levels, attendance clock-in/out, leave applications with a manager approval workflow, leave balance tracking, department & holiday management, overtime and reward leave, CSV export, and reporting analytics — built through the full SDLC: requirements gathering, ER diagramming, development, integration testing, and documentation.</p>
-      <div class="phases">
-        <div class="phase">
-          <div class="phase-label">Admin</div>
-          <ul><li>Manage employees</li><li>Manage departments</li><li>System-wide reports</li></ul>
-        </div>
-        <div class="phase">
-          <div class="phase-label">Manager</div>
-          <ul><li>Approve leave</li><li>Assign staff</li><li>Team reports</li></ul>
-        </div>
-        <div class="phase">
-          <div class="phase-label">Employee</div>
-          <ul><li>Clock in / out</li><li>Apply for leave</li><li>View attendance history</li></ul>
-        </div>
-      </div>
-      <div class="proj-tags">
-        <span class="proj-tag">C++</span><span class="proj-tag">MySQL</span><span class="proj-tag">XAMPP</span><span class="proj-tag">Solo Project</span>
-      </div>
-      <p style="margin-top:1rem"><a href="#" onclick="openModal('attendance');return false;" class="btn btn-outline" style="padding:.6rem 1.4rem;font-size:.8rem">See Full Case Study →</a></p>
+      <div class="featured-tag" id="featured-tag">Featured</div>
+      <div class="featured-title" id="featured-title">Select a <span>Project</span></div>
+      <p class="featured-desc" id="featured-desc">Click any project card below to see it featured here with full details.</p>
+      <div class="phases" id="featured-phases" style="display:none"></div>
+      <div class="proj-tags" id="featured-tags-list"></div>
+      <p style="margin-top:1rem"><a href="#" id="featured-cta" onclick="return false;" class="btn btn-outline" style="padding:.6rem 1.4rem;font-size:.8rem">See Full Case Study →</a></p>
     </div>
   </div>
 
   <div class="projects-grid">
 
     <!-- VR LOCOMOTION FYP -->
-    <div class="project-card" onclick="openModal('fyp')">
+    <div class="project-card" onclick="selectProject('fyp')">
       <div class="project-thumb t-vr"><span class="thumb-emoji">🥽</span></div>
       <div class="project-body">
         <div class="project-type">Final Year Project I · VR / UX Research</div>
@@ -204,23 +217,36 @@
       </div>
     </div>
 
-    <!-- FORBIDDEN BOOK FILM -->
-    <div class="project-card" onclick="openModal('film')">
+    <!-- ALMS SECURE WEB -->
+    <div class="project-card" onclick="selectProject('almssecure')">
+      <div class="project-thumb t-dev"><span class="thumb-emoji">🔐</span></div>
+      <div class="project-body">
+        <div class="project-type">Cybersecurity · Information Technology Security (BITS3423) · 2026</div>
+        <div class="project-name">ALMS Secure Web — Attendance & Leave System</div>
+        <div class="project-desc">Secure web-based rebuild of ALMS in PHP and MySQL, applying OWASP Top 10 practices — bcrypt password hashing, HTTPS/SSL, session management, XSS and SQL-injection mitigation, and role-based access control, deployed on a hardened Ubuntu/Apache server.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">PHP</span><span class="proj-tag">MySQL</span><span class="proj-tag">OWASP Top 10</span><span class="proj-tag">Project Leader</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PARALLEL FILM + MERCH -->
+    <div class="project-card" onclick="selectProject('film')">
       <div class="project-thumb t-film">
-        <img src="images/forbidden_book.jpg" alt="Forbidden Book" style="width:100%;height:100%;object-fit:cover;object-position:top;opacity:.85" onerror="this.style.display='none'">
+        <img src="images/parallelposter.jpg" alt="Parallel" style="width:100%;height:100%;object-fit:cover;object-position:top;opacity:.85" onerror="this.style.display='none'">
       </div>
       <div class="project-body">
-        <div class="project-type">Film Production · Workshop II</div>
-        <div class="project-name">Forbidden Book — Short Film</div>
-        <div class="project-desc">Sci-fi short film produced with FTMK's Media Unit and Motion In Focus, in collaboration with Radifin. Directed and edited by Fatnin.</div>
+        <div class="project-type">Film Production & Branding · Workshop II</div>
+        <div class="project-name">Parallel — Short Film & Merchandise</div>
+        <div class="project-desc">Sci-fi short film produced with FTMK's Media Unit and Motion In Focus, in collaboration with Radifin — directed and edited by Fatnin, plus the full merchandise and brand identity line (posters, t-shirts, cupsleeves, paperbags) built around the film.</div>
         <div class="proj-tags">
-          <span class="proj-tag">Premiere Pro</span><span class="proj-tag">After Effects</span><span class="proj-tag">Director</span>
+          <span class="proj-tag">Premiere Pro</span><span class="proj-tag">After Effects</span><span class="proj-tag">Director</span><span class="proj-tag">Branding</span>
         </div>
       </div>
     </div>
 
     <!-- SCI-FI VR GAME -->
-    <div class="project-card" onclick="openModal('vr')">
+    <div class="project-card" onclick="selectProject('vr')">
       <div class="project-thumb t-vr"><span class="thumb-emoji">🎮</span></div>
       <div class="project-body">
         <div class="project-type">VR Development · Virtual Reality Technology</div>
@@ -233,7 +259,7 @@
     </div>
 
     <!-- YEPPEO WEB APP -->
-    <div class="project-card" onclick="openModal('web')">
+    <div class="project-card" onclick="selectProject('web')">
       <div class="project-thumb t-web"><span class="thumb-emoji">🌐</span></div>
       <div class="project-body">
         <div class="project-type">Web Development · Web Application Development</div>
@@ -246,7 +272,7 @@
     </div>
 
     <!-- ECOTECH AI WASTE CLASSIFIER -->
-    <div class="project-card" onclick="openModal('ai')">
+    <div class="project-card" onclick="selectProject('ai')">
       <div class="project-thumb t-motion"><span class="thumb-emoji">♻️</span></div>
       <div class="project-body">
         <div class="project-type">AI / Machine Learning</div>
@@ -259,7 +285,7 @@
     </div>
 
     <!-- SUSTAINOPOLY GAME -->
-    <div class="project-card" onclick="openModal('game')">
+    <div class="project-card" onclick="selectProject('game')">
       <div class="project-thumb t-game"><span class="thumb-emoji">🎲</span></div>
       <div class="project-body">
         <div class="project-type">Project Management · UI/UX Design</div>
@@ -272,7 +298,7 @@
     </div>
 
     <!-- YOOYOO DESKTOP APP -->
-    <div class="project-card" onclick="openModal('yooyoo')">
+    <div class="project-card" onclick="selectProject('yooyoo')">
       <div class="project-thumb t-mobile"><span class="thumb-emoji">🧋</span></div>
       <div class="project-body">
         <div class="project-type">Desktop Application · Object-Oriented Programming</div>
@@ -285,7 +311,7 @@
     </div>
 
     <!-- AR E-BOOK -->
-    <div class="project-card" onclick="openModal('ar')">
+    <div class="project-card" onclick="selectProject('ar')">
       <div class="project-thumb t-web"><span class="thumb-emoji">📖</span></div>
       <div class="project-body">
         <div class="project-type">HCI · Augmented Reality</div>
@@ -298,7 +324,7 @@
     </div>
 
     <!-- UTEM 3D CAMPUS WALKTHROUGH -->
-    <div class="project-card" onclick="openModal('campus')">
+    <div class="project-card" onclick="selectProject('campus')">
       <div class="project-thumb t-vr"><span class="thumb-emoji">🏛️</span></div>
       <div class="project-body">
         <div class="project-type">Interactive Computer Graphics · System Integrator & Audio</div>
@@ -310,21 +336,8 @@
       </div>
     </div>
 
-    <!-- BLOSSOM CAFE DB + SHIFTY-BURGERS -->
-    <div class="project-card" onclick="openModal('db')">
-      <div class="project-thumb t-web"><span class="thumb-emoji">🗄️</span></div>
-      <div class="project-body">
-        <div class="project-type">Database & Data Structures</div>
-        <div class="project-name">Blossom Cafe DB & SHIFTY-BURGERS</div>
-        <div class="project-desc">A fully normalised (3NF) relational database for a cafe, with ERD, stored procedures and triggers — paired with a C++ console food-ordering system using STL containers and algorithms.</div>
-        <div class="proj-tags">
-          <span class="proj-tag">MySQL</span><span class="proj-tag">C++</span><span class="proj-tag">STL</span>
-        </div>
-      </div>
-    </div>
-
     <!-- 3D ANIMATION -->
-    <div class="project-card" onclick="openModal('animation')">
+    <div class="project-card" onclick="selectProject('animation')">
       <div class="project-thumb t-art"><span class="thumb-emoji">🧊</span></div>
       <div class="project-body">
         <div class="project-type">Computer Animation <span class="status-badge">In Progress</span></div>
@@ -337,7 +350,7 @@
     </div>
 
     <!-- DIGITAL IMAGING -->
-    <div class="project-card" onclick="openModal('imaging')">
+    <div class="project-card" onclick="selectProject('imaging')">
       <div class="project-thumb t-art"><span class="thumb-emoji">📷</span></div>
       <div class="project-body">
         <div class="project-type">Digital Imaging for Multimedia <span class="status-badge">In Progress</span></div>
@@ -349,24 +362,8 @@
       </div>
     </div>
 
-    <!-- MERCHANDISE -->
-    <div class="project-card" onclick="openModal('merch')">
-      <div class="project-thumb t-film">
-        <img src="https://enchantedlucid.github.io/workshop2portfolio/images/shirtfinal.png" alt="Merch" style="width:100%;height:100%;object-fit:cover;opacity:.8" onerror="this.style.display='none'">
-        <span class="thumb-emoji" style="position:absolute">👕</span>
-      </div>
-      <div class="project-body">
-        <div class="project-type">Brand & Merchandise Design</div>
-        <div class="project-name">Forbidden Book — Film Merchandise</div>
-        <div class="project-desc">Complete merchandise line and brand identity for the Forbidden Book film showcase — t-shirts, cupsleeves, paperbags, and fans built around the film's concept.</div>
-        <div class="proj-tags">
-          <span class="proj-tag">Photoshop</span><span class="proj-tag">Illustrator</span><span class="proj-tag">Branding</span>
-        </div>
-      </div>
-    </div>
-
     <!-- MOTION GRAPHICS -->
-    <div class="project-card" onclick="openModal('motion')">
+    <div class="project-card" onclick="selectProject('motion')">
       <div class="project-thumb t-motion"><span class="thumb-emoji">✨</span></div>
       <div class="project-body">
         <div class="project-type">Motion Graphics</div>
@@ -378,8 +375,21 @@
       </div>
     </div>
 
+    <!-- HORROR BOARD GAME -->
+    <div class="project-card" onclick="selectProject('boardgame')">
+      <div class="project-thumb t-art"><span class="thumb-emoji">🕸️</span></div>
+      <div class="project-body">
+        <div class="project-type">Game Play (Faculty Free Module) · Group Project</div>
+        <div class="project-name">Haunted Board — Horror Board Game</div>
+        <div class="project-desc">A Malaysian-horror-themed strategy board game built with a team of four — Fatnin designed the Action, Challenge, and Quiz card sets, while a teammate designed the board itself.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Card Design</span><span class="proj-tag">Illustrator</span><span class="proj-tag">Team of 4</span>
+        </div>
+      </div>
+    </div>
+
     <!-- DIGITAL ART -->
-    <div class="project-card" onclick="openModal('art')">
+    <div class="project-card" onclick="selectProject('art')">
       <div class="project-thumb t-art"><span class="thumb-emoji">🎨</span></div>
       <div class="project-body">
         <div class="project-type">Digital Art · Personal Project</div>
@@ -387,6 +397,21 @@
         <div class="project-desc">Personal pixel art and digital illustration work, alongside creative coding practice in Python on Codedex.</div>
         <div class="proj-tags">
           <span class="proj-tag">Pixel Art</span><span class="proj-tag">Illustrator</span><span class="proj-tag">Python</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ATTENDANCE & LEAVE MANAGEMENT SYSTEM -->
+    <div class="project-card" onclick="selectProject('attendance')">
+      <div class="project-thumb t-dev">
+        <img src="images/welcome_page.png" alt="Attendance & Leave Management System" style="width:100%;height:100%;object-fit:cover;opacity:.85" onerror="this.style.display='none'">
+      </div>
+      <div class="project-body">
+        <div class="project-type">Solo-Built System · Workshop I · 2024</div>
+        <div class="project-name">Attendance & Leave Management System</div>
+        <div class="project-desc">A full desktop attendance and leave management system, solo-designed and built from the ground up in C++ with MySQL on XAMPP — RBAC across Admin, Manager, and Employee levels, clock-in/out, leave approval workflows, and reporting analytics.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">C++</span><span class="proj-tag">MySQL</span><span class="proj-tag">XAMPP</span><span class="proj-tag">Solo Project</span>
         </div>
       </div>
     </div>
@@ -438,6 +463,41 @@
   </div>
 </div>
 
+<!-- ALMS SECURE WEB MODAL -->
+<div class="modal-overlay" id="modal-almssecure">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('almssecure')">✕</button>
+    <div class="modal-hero-fallback t-dev">🔐</div>
+    <div class="modal-body">
+      <div class="modal-tag">Information Technology Security (BITS3423) · 2026 · Project Leader & Backend Developer</div>
+      <div class="modal-title">ALMS Secure Web — <span>Attendance & Leave System</span></div>
+      <p class="modal-desc">A security-hardened, web-based rebuild of the Attendance & Leave Management System, developed in PHP and MySQL for the IT Security subject. As project leader and backend developer, Fatnin implemented role-based access control for Admin, Manager, and Employee users, attendance tracking, leave applications, approval workflows, and reporting modules — applying OWASP Top 10 practices throughout, including bcrypt password hashing, HTTPS/TLS encryption, session management, XSS prevention, and SQL-injection mitigation. Infrastructure was configured on Ubuntu Server with Apache, SSL/TLS, and firewall rules in VirtualBox.</p>
+      <div class="modal-phases">
+        <div class="modal-phase">
+          <div class="modal-phase-label">Application Layer</div>
+          <ul><li>RBAC (Admin/Manager/Employee)</li><li>Attendance & leave modules</li><li>Approval workflows</li></ul>
+        </div>
+        <div class="modal-phase">
+          <div class="modal-phase-label">Security Hardening</div>
+          <ul><li>bcrypt password hashing</li><li>XSS & SQLi mitigation</li><li>Secure session handling</li></ul>
+        </div>
+        <div class="modal-phase">
+          <div class="modal-phase-label">Infrastructure</div>
+          <ul><li>Ubuntu Server + Apache</li><li>SSL/TLS encryption</li><li>Firewall configuration</li></ul>
+        </div>
+      </div>
+      <div class="modal-tags">
+        <span class="modal-tag-item">PHP</span><span class="modal-tag-item">MySQL</span>
+        <span class="modal-tag-item">Ubuntu Server</span><span class="modal-tag-item">Apache</span>
+        <span class="modal-tag-item">SSL/TLS</span><span class="modal-tag-item">VirtualBox</span>
+      </div>
+      <div class="modal-links">
+        <a href="https://github.com/enchantedlucid" target="_blank" class="modal-link modal-link-primary">GitHub Repo</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- FYP MODAL -->
 <div class="modal-overlay" id="modal-fyp">
   <div class="modal">
@@ -465,15 +525,16 @@
     <img src="images/forbidden_book.jpg" alt="Forbidden Book" class="modal-hero" style="object-position:top" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
     <div class="modal-hero-fallback t-film" style="display:none">🎬</div>
     <div class="modal-body">
-      <div class="modal-tag">Short Film · Workshop II · Director & Video Editor</div>
-      <div class="modal-title"><span>Forbidden Book</span> — Short Film</div>
-      <p style="font-size:.72rem;color:var(--text-muted);margin-bottom:.8rem;font-style:italic">Working title: "Parallel"</p>
-      <p class="modal-desc">"Some knowledge should remain hidden." A sci-fi short film about a young man who unlocks a forbidden book that awakens a hidden digital force in the city around him. Produced in collaboration with FTMK's Media Unit ("Motion In Focus — Frames That Breathe") and Radifin, and screened at the faculty showcase. Fatnin led direction and video editing, with full VFX and merchandise design.</p>
+      <div class="modal-tag">Short Film & Merchandise · Workshop II · Director & Video Editor</div>
+      <div class="modal-title"><span>Parallel</span> — Short Film</div>
+      <p style="font-size:.72rem;color:var(--text-muted);margin-bottom:.8rem;font-style:italic">Also known as "Forbidden Book"</p>
+      <p class="modal-desc">"Some knowledge should remain hidden." A sci-fi short film about a young man who unlocks a forbidden book that awakens a hidden digital force in the city around him. Produced in collaboration with FTMK's Media Unit ("Motion In Focus — Frames That Breathe") and Radifin, and screened at the faculty showcase. Fatnin led direction and video editing, with full VFX design — and designed the complete merchandise and brand identity line built around the film, including posters, t-shirts, cupsleeves, paperbags, and fans.</p>
       <div class="modal-gallery">
         <img src="https://enchantedlucid.github.io/workshop2portfolio/images/posterdraft1.jpeg" alt="Poster Draft" onerror="this.style.display='none'">
         <img src="https://enchantedlucid.github.io/workshop2portfolio/images/storyboard7.png" alt="Storyboard" onerror="this.style.display='none'">
         <img src="https://enchantedlucid.github.io/workshop2portfolio/images/bts.png" alt="BTS" onerror="this.style.display='none'">
         <img src="https://enchantedlucid.github.io/workshop2portfolio/images/showcaseteam.jpg" alt="Team" onerror="this.style.display='none'">
+        <img src="https://enchantedlucid.github.io/workshop2portfolio/images/shirtfinal.png" alt="Merchandise" onerror="this.style.display='none'">
       </div>
       <div class="modal-phases">
         <div class="modal-phase">
@@ -489,9 +550,16 @@
           <ul><li>Video editing</li><li>VFX & effects</li><li>Color grading</li><li>Sound design</li></ul>
         </div>
       </div>
+      <div class="modal-phases" style="grid-template-columns:1fr">
+        <div class="modal-phase">
+          <div class="modal-phase-label">Merchandise & Brand Design</div>
+          <ul><li>Promotional posters</li><li>T-shirts & cupsleeves</li><li>Paperbags & fans</li><li>Social media promo materials</li></ul>
+        </div>
+      </div>
       <div class="modal-tags">
         <span class="modal-tag-item">Premiere Pro</span><span class="modal-tag-item">After Effects</span>
         <span class="modal-tag-item">DaVinci Resolve</span><span class="modal-tag-item">Photoshop</span>
+        <span class="modal-tag-item">Illustrator</span><span class="modal-tag-item">Branding</span>
       </div>
       <div class="modal-links">
         <a href="https://enchantedlucid.github.io/workshop2portfolio/logbook.html" target="_blank" class="modal-link modal-link-primary">View Logbook</a>
@@ -576,6 +644,49 @@
       </div>
       <div class="modal-links">
         <a href="https://github.com/enchantedlucid" target="_blank" class="modal-link modal-link-primary">GitHub Repo</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HORROR BOARD GAME MODAL -->
+<div class="modal-overlay" id="modal-boardgame">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('boardgame')">✕</button>
+    <img src="images/actioncard.png" alt="Haunted Board Game Board" class="modal-hero" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="modal-hero-fallback t-art" style="display:none">🕸️</div>
+    <div class="modal-body">
+      <div class="modal-tag">Game Play · Faculty Free Module · Group Project (Team of 4)</div>
+      <div class="modal-title">Haunted Board — <span>Horror Board Game</span></div>
+      <p class="modal-desc">A Malaysian-horror-themed strategy board game built by a team of four for the Game Play module. Players race from Start to Finish across a 64-tile spiral board, drawing Action, Challenge, and Quiz cards themed around local horror figures (Pontianak, Penanggal, Toyol, Pocong, Hantu Cina) and using the correct counter-item cards to repel ghost obstacles along the way. Fatnin's role was card design — illustrating and laying out the full Action, Challenge, and Quiz card decks — while a teammate handled the board design itself.</p>
+      <div class="modal-gallery">
+        <img src="images/instruction.png" alt="Instruction" onerror="this.style.display='none'">
+        <img src="images/actioncard.png" alt="Action Cards" onerror="this.style.display='none'">
+        <img src="images/challegecard.png" alt="Challenge Cards" onerror="this.style.display='none'">
+        <img src="images/quizcard.png" alt="Quiz Cards" onerror="this.style.display='none'">
+        <img src="images/huntedboard.png" alt="Game Board" onerror="this.style.display='none'">
+        <img src="images/backofcard.png" alt="Back Of Card" onerror="this.style.display='none'">
+      </div>
+      <div class="modal-phases">
+        <div class="modal-phase">
+          <div class="modal-phase-label">Action Cards</div>
+          <ul><li>Counter-items per monster</li><li>Antidote, Talisman, Nail…</li></ul>
+        </div>
+        <div class="modal-phase">
+          <div class="modal-phase-label">Challenge Cards</div>
+          <ul><li>Dark Ritual, Spirit Push</li><li>Shadow Flower, Fear Overload</li></ul>
+        </div>
+        <div class="modal-phase">
+          <div class="modal-phase-label">Quiz Cards</div>
+          <ul><li>Lore-based true/false</li><li>Monster-counter trivia</li></ul>
+        </div>
+      </div>
+      <div class="modal-tags">
+        <span class="modal-tag-item">Card Design</span><span class="modal-tag-item">Canva</span>
+        <span class="modal-tag-item">Game Design</span>
+      </div>
+      <div class="modal-links">
+        <a href="https://www.behance.net/fatninasrin" target="_blank" class="modal-link modal-link-primary">View Gallery</a>
       </div>
     </div>
   </div>
@@ -701,27 +812,6 @@
   </div>
 </div>
 
-<!-- MERCH MODAL -->
-<div class="modal-overlay" id="modal-merch">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('merch')">✕</button>
-    <img src="https://enchantedlucid.github.io/workshop2portfolio/images/shirtfinal.png" alt="Merch" class="modal-hero" style="object-position:top" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div class="modal-hero-fallback t-film" style="display:none">👕</div>
-    <div class="modal-body">
-      <div class="modal-tag">Brand & Merchandise Design · Forbidden Book Film</div>
-      <div class="modal-title">Forbidden Book — Film <span>Merchandise</span></div>
-      <p class="modal-desc">A complete merchandise line designed for the Forbidden Book film showcase event. Products include t-shirts, cupsleeves, paperbags, and fans — all built around the film's visual identity and brand elements for a consistent showcase experience.</p>
-      <div class="modal-tags">
-        <span class="modal-tag-item">Photoshop</span><span class="modal-tag-item">Illustrator</span>
-        <span class="modal-tag-item">Brand Design</span><span class="modal-tag-item">Print Design</span>
-      </div>
-      <div class="modal-links">
-        <a href="https://enchantedlucid.github.io/workshop2portfolio/logbook.html" target="_blank" class="modal-link modal-link-primary">View More</a>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- MOTION MODAL -->
 <div class="modal-overlay" id="modal-motion">
   <div class="modal">
@@ -762,6 +852,12 @@
   </div>
 </div>
 
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="Full size preview">
+</div>
+
 <footer>
   <p>© 2026 Nurul Fatnin Haidah · Built with HTML, CSS & JS · Kuala Lumpur, Malaysia</p>
 </footer>
@@ -776,6 +872,73 @@ function closeModal(id) {
   document.getElementById('modal-' + id).classList.remove('open');
   document.body.style.overflow = '';
 }
+
+// FEATURED SLOT
+const projectMeta = {
+  fyp: { tag: "Final Year Project I · In Progress · Unity XR", title: "VR Locomotion & <span>Motion Sickness Study</span>", desc: "Unity XR research project studying how different locomotion methods affect cybersickness, using the Simulator Sickness Questionnaire (SSQ) methodology.", tags: ["Unity XR","C#","UX Research"], thumbClass: "t-vr", emoji: "🥽" },
+  almssecure: { tag: "Cybersecurity · IT Security (BITS3423) · 2026", title: "ALMS Secure Web — <span>Attendance & Leave System</span>", desc: "Secure web-based rebuild of ALMS in PHP and MySQL, applying OWASP Top 10 practices — bcrypt hashing, HTTPS/SSL, session management, and RBAC, deployed on a hardened Ubuntu/Apache server.", tags: ["PHP","MySQL","OWASP Top 10","Project Leader"], thumbClass: "t-dev", emoji: "🔐", phases: [ {label:"Application Layer", items:["RBAC (Admin/Manager/Employee)","Attendance & leave modules"]}, {label:"Security Hardening", items:["bcrypt password hashing","XSS & SQLi mitigation"]}, {label:"Infrastructure", items:["Ubuntu Server + Apache","SSL/TLS encryption"]} ] },
+  film: { tag: "Short Film & Merchandise · Workshop II · Director & Video Editor", title: "<span>Parallel</span> — Short Film & Merchandise", desc: "Sci-fi short film produced with FTMK's Media Unit and Motion In Focus, in collaboration with Radifin — directed and edited by Fatnin, plus the full merchandise and brand identity line built around the film.", tags: ["Premiere Pro","After Effects","Director","Branding"], thumbClass: "t-film", emoji: "🎬", img: "images/parallelposter.jpg", phases: [ {label:"Pre-Production", items:["Scriptwriting","Storyboarding"]}, {label:"Production", items:["On-set direction","Cinematography"]}, {label:"Post-Production", items:["Editing & VFX","Merch & brand design"]} ] },
+  vr: { tag: "VR Development · Virtual Reality Technology", title: "Sci-Fi <span>VR Game</span>", desc: "Immersive VR experience built in Unity XR for the Virtual Reality Technology subject, exploring player interaction and presence in a sci-fi setting.", tags: ["Unity XR","C#","VR"], thumbClass: "t-vr", emoji: "🎮" },
+  web: { tag: "Web Development · Web Application Development", title: "Yeppeo Korean Restaurant — <span>QR Ordering Website</span>", desc: "Mobile-first, QR-code table ordering web app for a Korean restaurant concept — PHP order processing and MySQL CRUD with input sanitisation and session management.", tags: ["PHP","MySQL","HTML/CSS/JS"], thumbClass: "t-web", emoji: "🌐" },
+  ai: { tag: "Artificial Intelligence · 2024", title: "ECOTECH — <span>AI Waste Classifier</span>", desc: "ML image recognition app classifying recyclable materials to support recycling efficiency — decision tree classification built independently in Python with scikit-learn, pandas, and matplotlib.", tags: ["Python","scikit-learn","pandas"], thumbClass: "t-motion", emoji: "♻️" },
+  game: { tag: "Project Management · UI/UX Design", title: "Sustainopoly — <span>Unity Game</span>", desc: "Monopoly-inspired board game built in Unity, teaching sustainability concepts through gameplay — developed with a focus on UI/UX design.", tags: ["Unity","C#","Game Design"], thumbClass: "t-game", emoji: "🎲" },
+  yooyoo: { tag: "Object-Oriented Programming · 2024", title: "YooYoo — <span>Drinks Ordering System</span>", desc: "Desktop GUI system built with Java Swing, JDBC, and MySQL — Customer and Staff modules applying inheritance, polymorphism, and PreparedStatement for SQL-injection prevention.", tags: ["Java","Swing","JDBC"], thumbClass: "t-mobile", emoji: "🧋" },
+  ar: { tag: "HCI · Augmented Reality", title: "AR E-Book: <span>Computer Hardware</span>", desc: "HCI project bringing computer hardware concepts to life through augmented reality overlays — prototyped in Figma, built in Unity AR, validated with user surveys.", tags: ["Figma","Unity AR","HCI"], thumbClass: "t-web", emoji: "📖" },
+  campus: { tag: "Interactive Computer Graphics · 2024", title: "UTeM 3D <span>Campus Walkthrough</span>", desc: "Real-time 3D campus walkthrough built in C++ with OpenGL/GLUT. My role: system integrator and audio designer via the Windows Multimedia API.", tags: ["C++","OpenGL / GLUT","3D Graphics"], thumbClass: "t-vr", emoji: "🏛️" },
+  db: { tag: "Database & Data Structures", title: "Blossom Cafe DB & <span>SHIFTY-BURGERS</span>", desc: "A fully normalised (3NF) relational database for a cafe, paired with a C++ console food-ordering system using STL containers and algorithms.", tags: ["MySQL","C++","STL"], thumbClass: "t-web", emoji: "🗄️" },
+  animation: { tag: "Computer Animation · In Progress", title: "3D Animation & <span>Character Models</span>", desc: "Character modelling, rigging, and rendering in Blender for the Computer Animation subject.", tags: ["Blender","Rigging","3D Animation"], thumbClass: "t-art", emoji: "🧊" },
+  imaging: { tag: "Digital Imaging for Multimedia · In Progress", title: "Mental Health <span>Photography Series</span>", desc: "A conceptual photography series exploring mental health themes, shot and edited in Photoshop.", tags: ["Photoshop","Photography","Concept Art"], thumbClass: "t-art", emoji: "📷" },
+  motion: { tag: "Motion Graphics", title: "Motion <span>Graphics Reel</span>", desc: "Animated title sequences, kinetic typography, and explainer animations produced for the Motion Graphics subject and Motion Graphic Exhibition club.", tags: ["After Effects","Illustrator","Animate"], thumbClass: "t-motion", emoji: "✨" },
+  boardgame: { tag: "Game Play · Faculty Free Module · Team of 4", title: "Haunted Board — <span>Horror Board Game</span>", desc: "A Malaysian-horror-themed strategy board game built with a team of four — Fatnin designed the Action, Challenge, and Quiz card sets, a teammate designed the board.", tags: ["Card Design","Illustrator","Team of 4"], thumbClass: "t-art", emoji: "🕸️", img: "images/huntedboard.png", phases: [ {label:"Action Cards", items:["Counter-items per monster"]}, {label:"Challenge Cards", items:["Dark Ritual, Spirit Push…"]}, {label:"Quiz Cards", items:["Lore-based true/false"]} ] },
+  art: { tag: "Digital Art · Personal Project", title: "Pixel Art & <span>Creative Coding</span>", desc: "Personal pixel art and digital illustration work, alongside creative coding practice in Python on Codedex.", tags: ["Pixel Art","Illustrator","Python"], thumbClass: "t-art", emoji: "🎨" },
+  attendance: { tag: "Solo-Built System · Workshop I · 2024", title: "Attendance & Leave <span>Management System</span>", desc: "A full desktop attendance and leave management system, solo-designed and built from the ground up in C++ with MySQL on XAMPP — RBAC, clock-in/out, leave approval workflows, and reporting analytics.", tags: ["C++","MySQL","XAMPP","Solo Project"], thumbClass: "t-dev", emoji: "💻", img: "images/welcome_page.png", phases: [ {label:"Admin", items:["Manage employees","Manage departments"]}, {label:"Manager", items:["Approve leave","Assign staff"]}, {label:"Employee", items:["Clock in / out","Apply for leave"]} ] }
+};
+
+function renderFeatured(id) {
+  const m = projectMeta[id];
+  if (!m) return;
+  document.getElementById('featured-tag').textContent = m.tag;
+  document.getElementById('featured-title').innerHTML = m.title;
+  document.getElementById('featured-desc').textContent = m.desc;
+
+  const phasesEl = document.getElementById('featured-phases');
+  if (m.phases && m.phases.length) {
+    phasesEl.style.display = 'grid';
+    phasesEl.innerHTML = m.phases.map(p =>
+      `<div class="phase"><div class="phase-label">${p.label}</div><ul>${p.items.map(i => `<li>${i}</li>`).join('')}</ul></div>`
+    ).join('');
+  } else {
+    phasesEl.style.display = 'none';
+    phasesEl.innerHTML = '';
+  }
+
+  document.getElementById('featured-tags-list').innerHTML = m.tags.map(t => `<span class="proj-tag">${t}</span>`).join('');
+
+  const imgEl = document.getElementById('featured-img');
+  const fallbackEl = document.getElementById('featured-fallback');
+  fallbackEl.className = 'featured-img-fallback ' + m.thumbClass;
+  fallbackEl.textContent = m.emoji || '✨';
+  if (m.img) {
+    imgEl.src = m.img;
+    imgEl.style.display = 'block';
+    fallbackEl.style.display = 'none';
+  } else {
+    imgEl.style.display = 'none';
+    fallbackEl.style.display = 'flex';
+  }
+
+  document.getElementById('featured-cta').setAttribute('onclick', `openModal('${id}');return false;`);
+}
+
+function selectProject(id) {
+  renderFeatured(id);
+  document.getElementById('featured-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  openModal(id);
+}
+
+// Seed the featured slot on load without opening a modal
+renderFeatured('fyp');
+
 // Close on overlay click
 document.querySelectorAll('.modal-overlay').forEach(overlay => {
   overlay.addEventListener('click', function(e) {
@@ -788,11 +951,35 @@ document.querySelectorAll('.modal-overlay').forEach(overlay => {
 // Close on ESC key
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
-    document.querySelectorAll('.modal-overlay.open').forEach(m => {
-      m.classList.remove('open');
-      document.body.style.overflow = '';
-    });
+    if (document.getElementById('lightbox').classList.contains('open')) {
+      closeLightbox();
+    } else {
+      document.querySelectorAll('.modal-overlay.open').forEach(m => {
+        m.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    }
   }
+});
+
+// LIGHTBOX
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+// Wire up every gallery/hero image to open the lightbox on click
+document.querySelectorAll('.modal-gallery img, .modal-hero').forEach(img => {
+  img.addEventListener('click', function(e) {
+    e.stopPropagation();
+    openLightbox(this.src);
+  });
+});
+// Close lightbox when clicking its dark backdrop (not the image itself)
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
 });
 </script>
 </body>
