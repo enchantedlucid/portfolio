@@ -162,6 +162,12 @@
   transition: all .2s; z-index: 301;
 }
 .lightbox-close:hover { background: var(--orange); }
+
+/* DEMO VIDEO */
+.modal-demo-video {
+  width: 100%; border-radius: 8px; background: #000;
+  margin-bottom: 1.4rem; display: block;
+}
 </style>
 </head>
 <body>
@@ -221,11 +227,11 @@
     <div class="project-card" onclick="selectProject('almssecure')">
       <div class="project-thumb t-dev"><span class="thumb-emoji">🔐</span></div>
       <div class="project-body">
-        <div class="project-type">Cybersecurity · Information Technology Security (BITS3423) · 2026</div>
+        <div class="project-type">Cybersecurity · Information Technology Security (BITS3423) · Group 12</div>
         <div class="project-name">ALMS Secure Web — Attendance & Leave System</div>
-        <div class="project-desc">Secure web-based rebuild of ALMS in PHP and MySQL, applying OWASP Top 10 practices — bcrypt password hashing, HTTPS/SSL, session management, XSS and SQL-injection mitigation, and role-based access control, deployed on a hardened Ubuntu/Apache server.</div>
+        <div class="project-desc">Group project (Group 12) rebuilding ALMS as a security-hardened web app in PHP and MySQL. As backend developer, Fatnin built the Register, Login, Dashboard, Attendance, and Leave modules and implemented OWASP A01/A03 controls, deployed across two isolated Ubuntu VMs with HTTPS and UFW-restricted database access.</div>
         <div class="proj-tags">
-          <span class="proj-tag">PHP</span><span class="proj-tag">MySQL</span><span class="proj-tag">OWASP Top 10</span><span class="proj-tag">Project Leader</span>
+          <span class="proj-tag">PHP</span><span class="proj-tag">MySQL</span><span class="proj-tag">OWASP Top 10</span><span class="proj-tag">Backend</span>
         </div>
       </div>
     </div>
@@ -233,12 +239,12 @@
     <!-- PARALLEL FILM + MERCH -->
     <div class="project-card" onclick="selectProject('film')">
       <div class="project-thumb t-film">
-        <img src="images/parallelposter.jpg" alt="Parallel" style="width:100%;height:100%;object-fit:cover;object-position:top;opacity:.85" onerror="this.style.display='none'">
+        <img src="images/parallelbrand.png" alt="Parallel" style="width:100%;height:100%;object-fit:cover;object-position:top;opacity:.85" onerror="this.style.display='none'">
       </div>
       <div class="project-body">
         <div class="project-type">Film Production & Branding · Workshop II</div>
         <div class="project-name">Parallel — Short Film & Merchandise</div>
-        <div class="project-desc">Sci-fi short film produced with FTMK's Media Unit and Motion In Focus, in collaboration with Radifin — directed and edited by Fatnin, plus the full merchandise and brand identity line (posters, t-shirts, cupsleeves, paperbags) built around the film.</div>
+        <div class="project-desc">Sci-fi short film produced by Studio Reflect — directed and edited by Fatnin, plus the full merchandise and brand identity line (posters, t-shirts, cupsleeves, paperbags) built around the film.</div>
         <div class="proj-tags">
           <span class="proj-tag">Premiere Pro</span><span class="proj-tag">After Effects</span><span class="proj-tag">Director</span><span class="proj-tag">Branding</span>
         </div>
@@ -250,7 +256,7 @@
       <div class="project-thumb t-vr"><span class="thumb-emoji">🎮</span></div>
       <div class="project-body">
         <div class="project-type">VR Development · Virtual Reality Technology</div>
-        <div class="project-name">Sci-Fi VR Game <span class="status-badge">In Progress</span></div>
+        <div class="project-name">Sci-Fi VR Game </div>
         <div class="project-desc">Immersive VR experience built in Unity XR for the Virtual Reality Technology subject, exploring player interaction and presence in a sci-fi setting.</div>
         <div class="proj-tags">
           <span class="proj-tag">Unity XR</span><span class="proj-tag">C#</span><span class="proj-tag">VR</span>
@@ -336,11 +342,24 @@
       </div>
     </div>
 
+    <!-- BLOSSOM CAFE DB + SHIFTY-BURGERS -->
+    <div class="project-card" onclick="selectProject('db')">
+      <div class="project-thumb t-web"><span class="thumb-emoji">🗄️</span></div>
+      <div class="project-body">
+        <div class="project-type">Database & Data Structures</div>
+        <div class="project-name">Blossom Cafe DB & SHIFTY-BURGERS</div>
+        <div class="project-desc">A fully normalised (3NF) relational database for a cafe, with ERD, stored procedures and triggers — paired with a C++ console food-ordering system using STL containers and algorithms.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">MySQL</span><span class="proj-tag">C++</span><span class="proj-tag">STL</span>
+        </div>
+      </div>
+    </div>
+
     <!-- 3D ANIMATION -->
     <div class="project-card" onclick="selectProject('animation')">
       <div class="project-thumb t-art"><span class="thumb-emoji">🧊</span></div>
       <div class="project-body">
-        <div class="project-type">Computer Animation <span class="status-badge">In Progress</span></div>
+        <div class="project-type">Computer Animation </div>
         <div class="project-name">3D Animation & Character Models</div>
         <div class="project-desc">Character modelling, rigging, and rendering in Blender for the Computer Animation subject.</div>
         <div class="proj-tags">
@@ -353,7 +372,7 @@
     <div class="project-card" onclick="selectProject('imaging')">
       <div class="project-thumb t-art"><span class="thumb-emoji">📷</span></div>
       <div class="project-body">
-        <div class="project-type">Digital Imaging for Multimedia <span class="status-badge">In Progress</span></div>
+        <div class="project-type">Digital Imaging for Multimedia </div>
         <div class="project-name">Mental Health Photography Series</div>
         <div class="project-desc">A conceptual photography series exploring mental health themes, produced and edited in Photoshop for the Digital Imaging for Multimedia subject.</div>
         <div class="proj-tags">
@@ -367,8 +386,8 @@
       <div class="project-thumb t-motion"><span class="thumb-emoji">✨</span></div>
       <div class="project-body">
         <div class="project-type">Motion Graphics</div>
-        <div class="project-name">Motion Graphics Reel <span class="status-badge">In Progress</span></div>
-        <div class="project-desc">Animated title sequences, kinetic typography, and explainer animations produced for the Motion Graphics subject and Motion Graphic Exhibition club.</div>
+        <div class="project-name">Motion Graphics </div>
+        <div class="project-desc">Four assignments for the Motion Graphics subject and Motion Graphic Exhibition club — weather forecast, Raya-themed, sound effects, and an in-progress documentary final project. Produced by Horizon Gate with FTMK's Media Unit and Motion In Focus, in collaboration with Radifin</div>
         <div class="proj-tags">
           <span class="proj-tag">After Effects</span><span class="proj-tag">Illustrator</span><span class="proj-tag">Animate</span>
         </div>
@@ -383,7 +402,7 @@
         <div class="project-name">Haunted Board — Horror Board Game</div>
         <div class="project-desc">A Malaysian-horror-themed strategy board game built with a team of four — Fatnin designed the Action, Challenge, and Quiz card sets, while a teammate designed the board itself.</div>
         <div class="proj-tags">
-          <span class="proj-tag">Card Design</span><span class="proj-tag">Illustrator</span><span class="proj-tag">Team of 4</span>
+          <span class="proj-tag">Card Design</span><span class="proj-tag">Canva</span><span class="proj-tag">Team of 4</span>
         </div>
       </div>
     </div>
@@ -431,6 +450,7 @@
       <div class="modal-tag">System Development · Workshop I · 2024 · Solo Project</div>
       <div class="modal-title">Attendance & Leave <span>Management System</span></div>
       <p class="modal-desc">A full desktop attendance and leave management system, solo-designed and built in C++ with MySQL on XAMPP. Implements role-based access control across Admin, Manager, and Employee levels — attendance clock-in/out, leave applications with a manager approval workflow, leave balance, department & holiday management, overtime and reward leave, CSV export, and reporting analytics. Built through the full SDLC: requirements gathering, ER diagramming, C++ development, MySQL integration, unit & integration testing, and full documentation, with C++ exception handling and role-confined data access throughout.</p>
+      <iframe class="modal-demo-video" src="https://drive.google.com/file/d/1YgS_a8Rp0RPM7jq0WeGKi2gOJe7otu-M/preview" style="aspect-ratio:16/9;border:none" allow="autoplay" allowfullscreen></iframe>
       <div class="modal-gallery">
         <img src="images/admin_dashboard.png" alt="Admin Menu" onerror="this.style.display='none'">
         <img src="images/manager_dashboard.png" alt="Manager Menu" onerror="this.style.display='none'">
@@ -467,29 +487,38 @@
 <div class="modal-overlay" id="modal-almssecure">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('almssecure')">✕</button>
-    <div class="modal-hero-fallback t-dev">🔐</div>
+    <img src="images/ALMS_mainmenu.png" alt="ALMS Secure Web Main Menu" class="modal-hero" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="modal-hero-fallback t-dev" style="display:none">🔐</div>
     <div class="modal-body">
-      <div class="modal-tag">Information Technology Security (BITS3423) · 2026 · Project Leader & Backend Developer</div>
+      <div class="modal-tag">Information Technology Security (BITS3423) · Group 12 · Sem 2, 2025/2026 · Backend Developer</div>
       <div class="modal-title">ALMS Secure Web — <span>Attendance & Leave System</span></div>
-      <p class="modal-desc">A security-hardened, web-based rebuild of the Attendance & Leave Management System, developed in PHP and MySQL for the IT Security subject. As project leader and backend developer, Fatnin implemented role-based access control for Admin, Manager, and Employee users, attendance tracking, leave applications, approval workflows, and reporting modules — applying OWASP Top 10 practices throughout, including bcrypt password hashing, HTTPS/TLS encryption, session management, XSS prevention, and SQL-injection mitigation. Infrastructure was configured on Ubuntu Server with Apache, SSL/TLS, and firewall rules in VirtualBox.</p>
+      <p class="modal-desc">A security-hardened, web-based rebuild of the Attendance & Leave Management System, built for the IT Security group project (Group 12) with Wardina Najihah and Nurul Fatihah, under Ts. Dr. Zurina Binti Sa'aya. As backend developer, Fatnin migrated the original C++/MySQL desktop schema into a full PHP/MySQL web application — building the Register, Login, Dashboard, Attendance, and Leave Management modules — and implemented OWASP A01 (Broken Access Control) and A03 (Injection) controls across the codebase. The system runs across two isolated Ubuntu Server VMs: an Apache + PHP 8.2 web server reachable over HTTPS, and a MySQL 8.0 database server confined to a private Host-Only network with zero public internet exposure, enforced by UFW.</p>
+      <div class="modal-gallery">
+        <img src="images/alms_admindashboard.png" alt="ALMS Admin Dashboard" onerror="this.style.display='none'">
+        <img src="images/alms_employeemanagement.png" alt="ALMS Employee Management" onerror="this.style.display='none'">
+        <img src="images/alms_leave.png" alt="ALMS Leave Management" onerror="this.style.display='none'">
+        <img src="images/alms_security.png" alt="ALMS Security Log" onerror="this.style.display='none'">
+        <img src="images/alms_staffdashboard.png" alt="ALMS Staff Dashboard" onerror="this.style.display='none'">
+        <img src="images/ALMS_mainmenu.png" alt="ALMS Main Menu" onerror="this.style.display='none'">
+      </div>
       <div class="modal-phases">
         <div class="modal-phase">
-          <div class="modal-phase-label">Application Layer</div>
-          <ul><li>RBAC (Admin/Manager/Employee)</li><li>Attendance & leave modules</li><li>Approval workflows</li></ul>
+          <div class="modal-phase-label">My Role — Application Layer</div>
+          <ul><li>Register, Login, Dashboard modules</li><li>Attendance & Leave modules</li><li>C++ → web schema migration</li><li>Session checks (A01) & prepared queries (A03)</li></ul>
         </div>
         <div class="modal-phase">
-          <div class="modal-phase-label">Security Hardening</div>
-          <ul><li>bcrypt password hashing</li><li>XSS & SQLi mitigation</li><li>Secure session handling</li></ul>
+          <div class="modal-phase-label">Security Controls (OWASP)</div>
+          <ul><li>bcrypt password hashing (A02)</li><li>HTTPS enforced, TLS 1.2/1.3</li><li>HttpOnly/Secure/SameSite cookies (A07)</li><li>htmlspecialchars() output encoding (A03 XSS)</li></ul>
         </div>
         <div class="modal-phase">
-          <div class="modal-phase-label">Infrastructure</div>
-          <ul><li>Ubuntu Server + Apache</li><li>SSL/TLS encryption</li><li>Firewall configuration</li></ul>
+          <div class="modal-phase-label">Infrastructure (Team)</div>
+          <ul><li>Two-VM: Apache web server + isolated MySQL server</li><li>UFW — DB port restricted to web server IP</li><li>Self-signed SSL cert</li><li>SFTP chroot jail</li></ul>
         </div>
       </div>
       <div class="modal-tags">
-        <span class="modal-tag-item">PHP</span><span class="modal-tag-item">MySQL</span>
+        <span class="modal-tag-item">PHP 8.2</span><span class="modal-tag-item">MySQL 8.0</span>
         <span class="modal-tag-item">Ubuntu Server</span><span class="modal-tag-item">Apache</span>
-        <span class="modal-tag-item">SSL/TLS</span><span class="modal-tag-item">VirtualBox</span>
+        <span class="modal-tag-item">SSL/TLS</span><span class="modal-tag-item">VirtualBox</span><span class="modal-tag-item">Group Project</span>
       </div>
       <div class="modal-links">
         <a href="https://github.com/enchantedlucid" target="_blank" class="modal-link modal-link-primary">GitHub Repo</a>
@@ -507,6 +536,7 @@
       <div class="modal-tag">Final Year Project I · In Progress · Unity XR</div>
       <div class="modal-title">VR Locomotion & <span>Motion Sickness Study</span></div>
       <p class="modal-desc">My Final Year Project investigates how different VR locomotion methods (e.g. teleportation vs. smooth movement) affect cybersickness and user comfort. Built in Unity with Unity XR and C#, the study applies the Simulator Sickness Questionnaire (SSQ) methodology to measure participant discomfort across conditions. FYP II continues this work in the Special Semester.</p>
+      <iframe class="modal-demo-video" src="https://drive.google.com/file/d/1dwlxQhYJJnQxK-w3IXGVm0pe-Rzk5zUz/preview" style="aspect-ratio:16/9;border:none" allow="autoplay" allowfullscreen></iframe>
       <div class="modal-tags">
         <span class="modal-tag-item">Unity XR</span><span class="modal-tag-item">C#</span>
         <span class="modal-tag-item">SSQ Methodology</span><span class="modal-tag-item">UX Research</span>
@@ -518,22 +548,24 @@
   </div>
 </div>
 
-<!-- FORBIDDEN BOOK FILM MODAL -->
+<!-- PARALLEL FILM MODAL -->
 <div class="modal-overlay" id="modal-film">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('film')">✕</button>
-    <img src="images/forbidden_book.jpg" alt="Forbidden Book" class="modal-hero" style="object-position:top" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <img src="images/parallelbrand2.png" alt="Parallel Brand Logo" class="modal-hero" style="object-position:top;object-fit:contain;background:#0a140e" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
     <div class="modal-hero-fallback t-film" style="display:none">🎬</div>
     <div class="modal-body">
       <div class="modal-tag">Short Film & Merchandise · Workshop II · Director & Video Editor</div>
       <div class="modal-title"><span>Parallel</span> — Short Film</div>
-      <p style="font-size:.72rem;color:var(--text-muted);margin-bottom:.8rem;font-style:italic">Also known as "Forbidden Book"</p>
-      <p class="modal-desc">"Some knowledge should remain hidden." A sci-fi short film about a young man who unlocks a forbidden book that awakens a hidden digital force in the city around him. Produced in collaboration with FTMK's Media Unit ("Motion In Focus — Frames That Breathe") and Radifin, and screened at the faculty showcase. Fatnin led direction and video editing, with full VFX design — and designed the complete merchandise and brand identity line built around the film, including posters, t-shirts, cupsleeves, paperbags, and fans.</p>
+      <p class="modal-desc">A psychological sci-fi short film exploring parallel realities, emotional conflict, and mirror symbolism — built around a mirror as a physical divider between two worlds, with a warm/cool color split representing the duality. Produced under Studio Reflect, self-funded by the group with additional support from supervisor Dr. Hafiz, and screened at the faculty showcase on 15 January 2026 at Lab Multimedia 3, FTMK, UTeM. Fatnin led direction and video editing, with full VFX design — and designed the complete merchandise and brand identity line built around the film, including posters, t-shirts, cupsleeves, paperbags, and fans.</p>
       <div class="modal-gallery">
+        <img src="https://enchantedlucid.github.io/workshop2portfolio/images/posterfinal.jpg" alt="Final Poster" onerror="this.style.display='none'">
         <img src="https://enchantedlucid.github.io/workshop2portfolio/images/posterdraft1.jpeg" alt="Poster Draft" onerror="this.style.display='none'">
-        <img src="https://enchantedlucid.github.io/workshop2portfolio/images/storyboard7.png" alt="Storyboard" onerror="this.style.display='none'">
-        <img src="https://enchantedlucid.github.io/workshop2portfolio/images/bts.png" alt="BTS" onerror="this.style.display='none'">
-        <img src="https://enchantedlucid.github.io/workshop2portfolio/images/showcaseteam.jpg" alt="Team" onerror="this.style.display='none'">
+        <img src="https://enchantedlucid.github.io/workshop2portfolio/images/storyboard7.png" alt="Storyboard Scene 7" onerror="this.style.display='none'">
+        <img src="https://enchantedlucid.github.io/workshop2portfolio/images/storyboard8.png" alt="Storyboard Scene 8" onerror="this.style.display='none'">
+        <img src="https://enchantedlucid.github.io/workshop2portfolio/images/bts.png" alt="Behind the Scenes" onerror="this.style.display='none'">
+        <img src="https://enchantedlucid.github.io/workshop2portfolio/images/showcasescreening.jpg" alt="Film Screening" onerror="this.style.display='none'">
+        <img src="https://enchantedlucid.github.io/workshop2portfolio/images/showcaseteam.jpg" alt="Production Team" onerror="this.style.display='none'">
         <img src="https://enchantedlucid.github.io/workshop2portfolio/images/shirtfinal.png" alt="Merchandise" onerror="this.style.display='none'">
       </div>
       <div class="modal-phases">
@@ -550,10 +582,14 @@
           <ul><li>Video editing</li><li>VFX & effects</li><li>Color grading</li><li>Sound design</li></ul>
         </div>
       </div>
-      <div class="modal-phases" style="grid-template-columns:1fr">
+      <div class="modal-phases" style="grid-template-columns:repeat(2,1fr)">
         <div class="modal-phase">
           <div class="modal-phase-label">Merchandise & Brand Design</div>
           <ul><li>Promotional posters</li><li>T-shirts & cupsleeves</li><li>Paperbags & fans</li><li>Social media promo materials</li></ul>
+        </div>
+        <div class="modal-phase">
+          <div class="modal-phase-label">Trailer</div>
+          <ul><li>Edited the trailer sequence</li><li>VFX for the mirror transition</li><li>Sound design</li></ul>
         </div>
       </div>
       <div class="modal-tags">
@@ -562,8 +598,9 @@
         <span class="modal-tag-item">Illustrator</span><span class="modal-tag-item">Branding</span>
       </div>
       <div class="modal-links">
-        <a href="https://enchantedlucid.github.io/workshop2portfolio/logbook.html" target="_blank" class="modal-link modal-link-primary">View Logbook</a>
-        <a href="https://enchantedlucid.github.io/workshop2portfolio/project.html" target="_blank" class="modal-link modal-link-outline">Old Portfolio</a>
+        <a href="https://youtu.be/7_YIrz8-6tM?si=Sn-Te-dwTpd8kuCj" target="_blank" class="modal-link modal-link-primary">▶ Watch Full Film</a>
+        <a href="https://youtube.com/shorts/M8--OhzpEvA?si=CPrKyNzXzjTm-0I3" target="_blank" class="modal-link modal-link-outline">▶ Watch Trailers</a>
+        <a href="https://enchantedlucid.github.io/workshop2portfolio/logbook.html" target="_blank" class="modal-link modal-link-outline">View Workshop II</a>
       </div>
     </div>
   </div>
@@ -598,6 +635,12 @@
       <div class="modal-tag">Web Development · Web Application Development · 2024</div>
       <div class="modal-title">Yeppeo Korean Restaurant — <span>QR Ordering Website</span></div>
       <p class="modal-desc">A mobile-first, QR-code-based table ordering web application for a Korean restaurant concept. Customers scan a QR code at their table to browse the digital menu and place orders from their phone, while a PHP back end processes orders with MySQL CRUD, input sanitisation, and session management.</p>
+      <div class="modal-gallery">
+        <img src="images/yeppeo_mainmenu.png" alt="Yeppeo Main Menu" onerror="this.style.display='none'">
+        <img src="images/yeppeo_qr.png" alt="Yeppeo QR Order Page" onerror="this.style.display='none'">
+        <img src="images/yeppeo_stafforders.png" alt="Yeppeo Staff Orders" onerror="this.style.display='none'">
+        <img src="images/yeppeo_customerreceipt.png" alt="Yeppeo Customer Receipt" onerror="this.style.display='none'">
+      </div>
       <div class="modal-tags">
         <span class="modal-tag-item">PHP</span><span class="modal-tag-item">MySQL</span>
         <span class="modal-tag-item">HTML</span><span class="modal-tag-item">CSS</span><span class="modal-tag-item">JavaScript</span>
@@ -638,6 +681,7 @@
       <div class="modal-tag">Project Management · UI/UX Design</div>
       <div class="modal-title">Sustainopoly — <span>Unity Game</span></div>
       <p class="modal-desc">A Monopoly-inspired board game built in Unity that teaches sustainability and environmental decision-making through gameplay. Developed for the Project Management subject with a focus on UI/UX design, game logic, and board mechanics.</p>
+      <iframe class="modal-demo-video" src="https://drive.google.com/file/d/1Wz-gwWXp7u2GyVw39AdRqhlwMwWpdKxN/preview" style="aspect-ratio:16/9;border:none" allow="autoplay" allowfullscreen></iframe>
       <div class="modal-tags">
         <span class="modal-tag-item">Unity</span><span class="modal-tag-item">C#</span>
         <span class="modal-tag-item">Game Design</span>
@@ -701,6 +745,7 @@
       <div class="modal-tag">Object-Oriented Programming · 2024</div>
       <div class="modal-title">YooYoo — <span>Drinks Ordering System</span></div>
       <p class="modal-desc">A desktop GUI system built with Java Swing, JDBC, and MySQL. Features a Customer module (register, login, browse three categories — Milk Tea, Fruit Tea, Smoothies — customise, order, pay, and membership discounts) and a Staff module for CRUD menu management. Applies OOP throughout: inheritance across the drink class hierarchy, polymorphism, interfaces, Java Collections, and PreparedStatement for SQL-injection prevention.</p>
+      <iframe class="modal-demo-video" src="https://drive.google.com/file/d/1c47RBi_lSnn6SEu-YC1pPFag3Yjyno5W/preview" style="aspect-ratio:16/9;border:none" allow="autoplay" allowfullscreen></iframe>
       <div class="modal-tags">
         <span class="modal-tag-item">Java</span><span class="modal-tag-item">Swing</span>
         <span class="modal-tag-item">JDBC</span><span class="modal-tag-item">MySQL</span><span class="modal-tag-item">OOP</span>
@@ -721,6 +766,7 @@
       <div class="modal-tag">Human-Computer Interaction · Augmented Reality</div>
       <div class="modal-title">AR E-Book: <span>Computer Hardware</span></div>
       <p class="modal-desc">An augmented reality e-book that layers interactive 3D models and animations of computer hardware components over printed pages, viewed through a mobile camera. UX and page layout were prototyped in Figma before implementation in Unity AR, validated with user surveys applying core HCI usability principles.</p>
+      <iframe class="modal-demo-video" src="https://drive.google.com/file/d/10RlP1GlLRVa-hGa0Fm29kYSIZHkllEab/preview" style="aspect-ratio:16/9;border:none" allow="autoplay" allowfullscreen></iframe>
       <div class="modal-tags">
         <span class="modal-tag-item">Figma</span><span class="modal-tag-item">Unity AR</span>
         <span class="modal-tag-item">HCI</span>
@@ -778,7 +824,7 @@
     <button class="modal-close" onclick="closeModal('animation')">✕</button>
     <div class="modal-hero-fallback t-art">🧊</div>
     <div class="modal-body">
-      <div class="modal-tag">Computer Animation · In Progress</div>
+      <div class="modal-tag">Computer Animation </div>
       <div class="modal-title">3D Animation & <span>Character Models</span></div>
       <p class="modal-desc">Character modelling, rigging, and rendering practice in Blender for the Computer Animation subject — building toward a short animated sequence.</p>
       <div class="modal-tags">
@@ -798,7 +844,7 @@
     <button class="modal-close" onclick="closeModal('imaging')">✕</button>
     <div class="modal-hero-fallback t-art">📷</div>
     <div class="modal-body">
-      <div class="modal-tag">Digital Imaging for Multimedia · In Progress</div>
+      <div class="modal-tag">Digital Imaging for Multimedia </div>
       <div class="modal-title">Mental Health <span>Photography Series</span></div>
       <p class="modal-desc">A conceptual photography series exploring mental health themes through composition, lighting, and post-processing — shot and edited in Photoshop for the Digital Imaging for Multimedia subject.</p>
       <div class="modal-tags">
@@ -819,8 +865,46 @@
     <div class="modal-hero-fallback t-motion">✨</div>
     <div class="modal-body">
       <div class="modal-tag">Motion Graphics · Faculty Free Module</div>
-      <div class="modal-title">Motion <span>Graphics Reel</span></div>
-      <p class="modal-desc">A collection of animated title sequences, kinetic typography, and short explainer animations produced for the Motion Graphics subject, incorporating green screen compositing, sound design, and AI-assisted asset generation.</p>
+      <div class="modal-title">Motion <span>Graphics </span></div>
+      <p class="modal-desc">Four assignments produced for the Motion Graphics subject and the Motion Graphic Exhibition, covering typography animation, keyframing, scene transitions, and sound-synced motion work. Produced by Horizon Gate with FTMK's Media Unit and Motion In Focus, in collaboration with Radifin.</p>
+
+      <div class="modal-gallery">
+        <img src="/images/forbiddenbookposter.jpg" alt="Forbidden Book Documentary Poster" onerror="this.style.display='none'">
+      </div>
+      
+      <div class="modal-phases" style="grid-template-columns:repeat(2,1fr)">
+        <div class="modal-phase">
+          <div class="modal-phase-label">Weather Forecast</div>
+          <ul><li>Animated weather report video</li><li>Typography & iconography</li></ul>
+          <p style="margin-top:.6rem"><a href="https://www.youtube.com/watch?v=_rRWp12mcxw" target="_blank" style="color:#f5a05a;font-size:.72rem;font-weight:700;text-decoration:none">▶ Watch on YouTube</a></p>
+        </div>
+        <div class="modal-phase">
+          <div class="modal-phase-label">Raya-Themed</div>
+          <ul><li>Festive motion graphics piece</li><li>Cultural visual motifs</li></ul>
+          <p style="margin-top:.6rem"><a href="https://www.youtube.com/watch?v=OspZZc7ew44" target="_blank" style="color:#f5a05a;font-size:.72rem;font-weight:700;text-decoration:none">▶ Watch on YouTube</a></p>
+        </div>
+        <div class="modal-phase">
+          <div class="modal-phase-label">Sound Effects Assignment</div>
+          <ul><li>Sound design synced to motion</li><li>Foley & audio timing</li></ul>
+          <p style="margin-top:.6rem"><a href="https://www.youtube.com/shorts/4aNHIHOruYc" target="_blank" style="color:#f5a05a;font-size:.72rem;font-weight:700;text-decoration:none">▶ Watch on YouTube</a></p>
+        </div>
+        <div class="modal-phase">
+          <img src="images/forbiddenbookbrand.png" alt="Forbidden Book Brand Logo" class="modal-hero" style="object-position:top;object-fit:contain;background:#0a140e" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="modal-phase-label">Documentary </div>
+          <ul><li>Forbidden Book documentary teaser</li><li>AI-generated VFX clips (coming soon)</li></ul>
+          <p style="margin-top:.6rem"><a href="https://www.youtube.com/watch?v=N_wxKUz4SJU" target="_blank" style="color:#f5a05a;font-size:.72rem;font-weight:700;text-decoration:none">▶ Watch on YouTube</a></p>
+        </div>
+      </div>
+      
+      <div style="margin-bottom:1.4rem">
+        <div class="modal-phase-label" style="margin-bottom:.6rem">AI-Generated VFX Clips</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem">
+          <video src="videos/book_appear.mp4" controls playsinline style="width:100%;border-radius:6px;background:#000;aspect-ratio:1;object-fit:cover" onerror="this.style.display='none'"></video>
+          <video src="videos/portal_appear.mp4" controls playsinline style="width:100%;border-radius:6px;background:#000;aspect-ratio:1;object-fit:cover" onerror="this.style.display='none'"></video>
+          <video src="videos/touch_portal.mp4" controls playsinline style="width:100%;border-radius:6px;background:#000;aspect-ratio:1;object-fit:cover" onerror="this.style.display='none'"></video>
+        </div>
+      </div>
+      
       <div class="modal-tags">
         <span class="modal-tag-item">After Effects</span><span class="modal-tag-item">Illustrator</span>
         <span class="modal-tag-item">Animate</span><span class="modal-tag-item">Premiere Pro</span>
@@ -876,20 +960,20 @@ function closeModal(id) {
 // FEATURED SLOT
 const projectMeta = {
   fyp: { tag: "Final Year Project I · In Progress · Unity XR", title: "VR Locomotion & <span>Motion Sickness Study</span>", desc: "Unity XR research project studying how different locomotion methods affect cybersickness, using the Simulator Sickness Questionnaire (SSQ) methodology.", tags: ["Unity XR","C#","UX Research"], thumbClass: "t-vr", emoji: "🥽" },
-  almssecure: { tag: "Cybersecurity · IT Security (BITS3423) · 2026", title: "ALMS Secure Web — <span>Attendance & Leave System</span>", desc: "Secure web-based rebuild of ALMS in PHP and MySQL, applying OWASP Top 10 practices — bcrypt hashing, HTTPS/SSL, session management, and RBAC, deployed on a hardened Ubuntu/Apache server.", tags: ["PHP","MySQL","OWASP Top 10","Project Leader"], thumbClass: "t-dev", emoji: "🔐", phases: [ {label:"Application Layer", items:["RBAC (Admin/Manager/Employee)","Attendance & leave modules"]}, {label:"Security Hardening", items:["bcrypt password hashing","XSS & SQLi mitigation"]}, {label:"Infrastructure", items:["Ubuntu Server + Apache","SSL/TLS encryption"]} ] },
-  film: { tag: "Short Film & Merchandise · Workshop II · Director & Video Editor", title: "<span>Parallel</span> — Short Film & Merchandise", desc: "Sci-fi short film produced with FTMK's Media Unit and Motion In Focus, in collaboration with Radifin — directed and edited by Fatnin, plus the full merchandise and brand identity line built around the film.", tags: ["Premiere Pro","After Effects","Director","Branding"], thumbClass: "t-film", emoji: "🎬", img: "images/parallelposter.jpg", phases: [ {label:"Pre-Production", items:["Scriptwriting","Storyboarding"]}, {label:"Production", items:["On-set direction","Cinematography"]}, {label:"Post-Production", items:["Editing & VFX","Merch & brand design"]} ] },
+  almssecure: { tag: "IT Security (BITS3423) · Group 12 · Project Leader & Backend Dev", title: "ALMS Secure Web — <span>Attendance & Leave System</span>", desc: "Security-hardened web rebuild of ALMS for the IT Security group project — Fatnin led backend development (Register, Login, Dashboard, Attendance, Leave modules) and OWASP A01/A03 controls, deployed across two isolated Ubuntu VMs with HTTPS and UFW-restricted MySQL.", tags: ["PHP 8.2","MySQL 8.0","OWASP Top 10","Project Leader"], thumbClass: "t-dev", emoji: "🔐", img: "images/ALMS_mainmenu.png", phases: [ {label:"My Role — Application Layer", items:["Register, Login, Dashboard","Attendance & Leave modules"]}, {label:"Security Controls (OWASP)", items:["bcrypt hashing (A02)","HttpOnly/Secure/SameSite cookies (A07)"]}, {label:"Infrastructure (Team)", items:["Two-VM: web server + isolated DB","UFW — DB port restricted to web server"]} ] },
+  film: { tag: "Short Film & Merchandise · Workshop II · Director & Video Editor", title: "<span>Parallel</span> — Short Film & Merchandise", desc: "Sci-fi short film produced by Studio Reflect — directed and edited by Fatnin, plus the full merchandise and brand identity line built around the film.", tags: ["Premiere Pro","After Effects","Director","Branding"], thumbClass: "t-film", emoji: "🎬", img: "images/parallelposter.jpg", phases: [ {label:"Pre-Production", items:["Scriptwriting","Storyboarding"]}, {label:"Production", items:["On-set direction","Cinematography"]}, {label:"Post-Production", items:["Editing & VFX","Merch & brand design"]} ] },
   vr: { tag: "VR Development · Virtual Reality Technology", title: "Sci-Fi <span>VR Game</span>", desc: "Immersive VR experience built in Unity XR for the Virtual Reality Technology subject, exploring player interaction and presence in a sci-fi setting.", tags: ["Unity XR","C#","VR"], thumbClass: "t-vr", emoji: "🎮" },
-  web: { tag: "Web Development · Web Application Development", title: "Yeppeo Korean Restaurant — <span>QR Ordering Website</span>", desc: "Mobile-first, QR-code table ordering web app for a Korean restaurant concept — PHP order processing and MySQL CRUD with input sanitisation and session management.", tags: ["PHP","MySQL","HTML/CSS/JS"], thumbClass: "t-web", emoji: "🌐" },
+  web: { tag: "Web Development · Web Application Development", title: "Yeppeo Korean Restaurant — <span>QR Ordering Website</span>", desc: "Mobile-first, QR-code table ordering web app for a Korean restaurant concept — PHP order processing and MySQL CRUD with input sanitisation and session management.", tags: ["PHP","MySQL","HTML/CSS/JS"], thumbClass: "t-web", emoji: "🌐", img: "images/yeppeo_mainmenu.png" },
   ai: { tag: "Artificial Intelligence · 2024", title: "ECOTECH — <span>AI Waste Classifier</span>", desc: "ML image recognition app classifying recyclable materials to support recycling efficiency — decision tree classification built independently in Python with scikit-learn, pandas, and matplotlib.", tags: ["Python","scikit-learn","pandas"], thumbClass: "t-motion", emoji: "♻️" },
   game: { tag: "Project Management · UI/UX Design", title: "Sustainopoly — <span>Unity Game</span>", desc: "Monopoly-inspired board game built in Unity, teaching sustainability concepts through gameplay — developed with a focus on UI/UX design.", tags: ["Unity","C#","Game Design"], thumbClass: "t-game", emoji: "🎲" },
   yooyoo: { tag: "Object-Oriented Programming · 2024", title: "YooYoo — <span>Drinks Ordering System</span>", desc: "Desktop GUI system built with Java Swing, JDBC, and MySQL — Customer and Staff modules applying inheritance, polymorphism, and PreparedStatement for SQL-injection prevention.", tags: ["Java","Swing","JDBC"], thumbClass: "t-mobile", emoji: "🧋" },
   ar: { tag: "HCI · Augmented Reality", title: "AR E-Book: <span>Computer Hardware</span>", desc: "HCI project bringing computer hardware concepts to life through augmented reality overlays — prototyped in Figma, built in Unity AR, validated with user surveys.", tags: ["Figma","Unity AR","HCI"], thumbClass: "t-web", emoji: "📖" },
   campus: { tag: "Interactive Computer Graphics · 2024", title: "UTeM 3D <span>Campus Walkthrough</span>", desc: "Real-time 3D campus walkthrough built in C++ with OpenGL/GLUT. My role: system integrator and audio designer via the Windows Multimedia API.", tags: ["C++","OpenGL / GLUT","3D Graphics"], thumbClass: "t-vr", emoji: "🏛️" },
   db: { tag: "Database & Data Structures", title: "Blossom Cafe DB & <span>SHIFTY-BURGERS</span>", desc: "A fully normalised (3NF) relational database for a cafe, paired with a C++ console food-ordering system using STL containers and algorithms.", tags: ["MySQL","C++","STL"], thumbClass: "t-web", emoji: "🗄️" },
-  animation: { tag: "Computer Animation · In Progress", title: "3D Animation & <span>Character Models</span>", desc: "Character modelling, rigging, and rendering in Blender for the Computer Animation subject.", tags: ["Blender","Rigging","3D Animation"], thumbClass: "t-art", emoji: "🧊" },
-  imaging: { tag: "Digital Imaging for Multimedia · In Progress", title: "Mental Health <span>Photography Series</span>", desc: "A conceptual photography series exploring mental health themes, shot and edited in Photoshop.", tags: ["Photoshop","Photography","Concept Art"], thumbClass: "t-art", emoji: "📷" },
-  motion: { tag: "Motion Graphics", title: "Motion <span>Graphics Reel</span>", desc: "Animated title sequences, kinetic typography, and explainer animations produced for the Motion Graphics subject and Motion Graphic Exhibition club.", tags: ["After Effects","Illustrator","Animate"], thumbClass: "t-motion", emoji: "✨" },
-  boardgame: { tag: "Game Play · Faculty Free Module · Team of 4", title: "Haunted Board — <span>Horror Board Game</span>", desc: "A Malaysian-horror-themed strategy board game built with a team of four — Fatnin designed the Action, Challenge, and Quiz card sets, a teammate designed the board.", tags: ["Card Design","Illustrator","Team of 4"], thumbClass: "t-art", emoji: "🕸️", img: "images/huntedboard.png", phases: [ {label:"Action Cards", items:["Counter-items per monster"]}, {label:"Challenge Cards", items:["Dark Ritual, Spirit Push…"]}, {label:"Quiz Cards", items:["Lore-based true/false"]} ] },
+  animation: { tag: "Computer Animation", title: "3D Animation & <span>Character Models</span>", desc: "Character modelling, rigging, and rendering in Blender for the Computer Animation subject.", tags: ["Blender","Rigging","3D Animation"], thumbClass: "t-art", emoji: "🧊" },
+  imaging: { tag: "Digital Imaging for Multimedia", title: "Mental Health <span>Photography Series</span>", desc: "A conceptual photography series exploring mental health themes, shot and edited in Photoshop.", tags: ["Photoshop","Photography","Concept Art"], thumbClass: "t-art", emoji: "📷" },
+  motion: { tag: "Motion Graphics · Faculty Free Module", title: "Motion <span>Graphics </span>", desc: "Four assignments produced for the Motion Graphics subject and Motion Graphic Exhibition club, covering typography animation, keyframing, scene transitions, and sound-synced motion work. Produced by Horizon Gate with FTMK's Media Unit and Motion In Focus, in collaboration with Radifin.", tags: ["After Effects","Illustrator","Animate"], thumbClass: "t-motion", emoji: "✨", img: "images/forbiddenbookbrand.png", phases: [ {label:"Weather Forecast", items:["Animated weather report"]}, {label:"Raya-Themed", items:["Festive motion piece"]}, {label:"Sound Effects", items:["Sound design synced to motion"]}, {label:"Documentary", items:["Forbidden Book documentary teaser"]} ] },
+  boardgame: { tag: "Game Play · Faculty Free Module · Team of 4", title: "Haunted Board — <span>Horror Board Game</span>", desc: "A Malaysian-horror-themed strategy board game built with a team of four — Fatnin designed the Action, Challenge, and Quiz card sets, a teammate designed the board.", tags: ["Card Design","Canva","Game Design"], thumbClass: "t-art", emoji: "🕸️", img: "images/huntedboard.png", phases: [ {label:"Action Cards", items:["Counter-items per monster"]}, {label:"Challenge Cards", items:["Dark Ritual, Spirit Push…"]}, {label:"Quiz Cards", items:["Lore-based true/false"]} ] },
   art: { tag: "Digital Art · Personal Project", title: "Pixel Art & <span>Creative Coding</span>", desc: "Personal pixel art and digital illustration work, alongside creative coding practice in Python on Codedex.", tags: ["Pixel Art","Illustrator","Python"], thumbClass: "t-art", emoji: "🎨" },
   attendance: { tag: "Solo-Built System · Workshop I · 2024", title: "Attendance & Leave <span>Management System</span>", desc: "A full desktop attendance and leave management system, solo-designed and built from the ground up in C++ with MySQL on XAMPP — RBAC, clock-in/out, leave approval workflows, and reporting analytics.", tags: ["C++","MySQL","XAMPP","Solo Project"], thumbClass: "t-dev", emoji: "💻", img: "images/welcome_page.png", phases: [ {label:"Admin", items:["Manage employees","Manage departments"]}, {label:"Manager", items:["Approve leave","Assign staff"]}, {label:"Employee", items:["Clock in / out","Apply for leave"]} ] }
 };
