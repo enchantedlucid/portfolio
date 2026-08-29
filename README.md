@@ -1,2 +1,2 @@
-# Fatnin_WorkPortfolio
+# Fatnin_Portfolio
 Personal portfolio website showcasing my projects, skills, and achievements.
